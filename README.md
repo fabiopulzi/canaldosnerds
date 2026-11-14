@@ -53,3 +53,15 @@ esptool.py --chip esp32 merge_bin -o firmware.merged.bin \
 Os outros offsets (partições em 0x8000, boot_app0 em 0xe000, app em 0x10000) são os padrões do Arduino/PlatformIO.
 
 Um mesmo manifest pode ter vários `builds`, um por chip. O site detecta o chip conectado e grava o build certo.
+
+## Vídeos do canal (carrossel)
+
+A lista de vídeos fica em `videos.json` e é atualizada sozinha a cada 6 horas pelo
+GitHub Actions (`.github/workflows/videos.yml`), a partir do feed público do canal.
+Os Shorts ficam de fora. Para atualizar na hora, abra a aba **Actions** do repositório,
+escolha "Atualizar vídeos do canal" e clique em **Run workflow**. Também dá para rodar
+no seu computador:
+
+```
+python3 scripts/atualizar_videos.py
+```
