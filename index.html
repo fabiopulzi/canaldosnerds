@@ -107,7 +107,7 @@
     .btn-yt:hover { background: #ff1f4b; }
     .btn svg { width: 20px; height: 20px; flex: none; }
     .icones { display: flex; align-items: flex-end; gap: 14px; }
-    .moeda { width: 112px; height: 112px; filter: drop-shadow(0 0 22px rgba(255,170,0,.45)); animation: flutuar 5s ease-in-out infinite; }
+    .moeda { width: 150px; height: 150px; filter: drop-shadow(0 0 18px rgba(30,139,255,.55)) drop-shadow(0 8px 14px rgba(0,0,0,.6)); animation: flutuar 5s ease-in-out infinite; }
     .grafico { width: 78px; height: 78px; }
     @keyframes flutuar { 50% { transform: translateY(-6px) rotate(-4deg); } }
     @media (prefers-reduced-motion: reduce) { .moeda { animation: none; } html { scroll-behavior: auto; } }
@@ -339,20 +339,7 @@
             </div>
           </div>
           <div class="icones" aria-hidden="true">
-            <svg class="moeda" viewBox="0 0 120 120">
-              <defs>
-                <radialGradient id="g-moeda" cx="35%" cy="30%" r="75%">
-                  <stop offset="0" stop-color="#ffe9a3"/><stop offset=".45" stop-color="#ffb400"/><stop offset="1" stop-color="#b85e00"/>
-                </radialGradient>
-              </defs>
-              <circle cx="60" cy="60" r="56" fill="url(#g-moeda)" stroke="#7a3d00" stroke-width="3"/>
-              <circle cx="60" cy="60" r="44" fill="none" stroke="#fff3c4" stroke-opacity=".55" stroke-width="2.5" stroke-dasharray="4 5"/>
-              <g transform="rotate(-12 60 60)" fill="#fff6d6" stroke="#9a4d00" stroke-width="2.5" stroke-linejoin="round">
-                <rect x="50" y="24" width="6" height="12" rx="1.5"/><rect x="62" y="24" width="6" height="12" rx="1.5"/>
-                <rect x="50" y="84" width="6" height="12" rx="1.5"/><rect x="62" y="84" width="6" height="12" rx="1.5"/>
-                <path fill-rule="evenodd" d="M40 32h28c9 0 15 5 15 13 0 5-3 9-7 11 6 2 10 6 10 13 0 9-7 17-18 17H40zM54 44v11h11c3 0 5-2 5-5.5S68 44 65 44zM54 66v12h13c3.5 0 6-2.5 6-6s-2.5-6-6-6z"/>
-              </g>
-            </svg>
+            <img class="moeda" src="assets/moeda-bitcoin.png" width="150" height="150" alt="">
             <svg class="grafico" viewBox="0 0 80 80">
               <defs><linearGradient id="g-barra" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd45c"/><stop offset="1" stop-color="#ff8a00"/></linearGradient></defs>
               <rect x="6" y="52" width="12" height="22" rx="2" fill="url(#g-barra)"/>
