@@ -4,7 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Firmwares ESP32</title>
-  <script type="module" src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module"></script>
+  <!-- Versão fixa: o contador de instalações depende do funcionamento interno desta versão. -->
+  <script type="module" src="https://unpkg.com/esp-web-tools@10.5.2/dist/web/install-button.js?module"></script>
   <style>
     :root {
       --bg: #f6f7f9; --card: #ffffff; --text: #1d2330; --muted: #5b6475;
@@ -37,6 +38,8 @@
     .card h2 { margin: 0 0 4px; font-size: 1.15rem; }
     .card p { margin: 0 0 8px; color: var(--muted); }
     .tags { display: flex; gap: 6px; flex-wrap: wrap; }
+    .contador { margin-top: 10px; font-size: .88rem; color: var(--muted); }
+    .contador strong { color: var(--text); font-variant-numeric: tabular-nums; }
     .tag { background: var(--tag); border-radius: 999px; padding: 2px 10px; font-size: .8rem; }
     esp-web-install-button button {
       background: var(--accent); color: var(--accent-text); border: 0; border-radius: 8px;
@@ -120,6 +123,58 @@
       }
     ];
 
+    // ---- Contador de instalações ----
+    // Guardado no Abacus (abacus.jasoncameron.dev), serviço gratuito e sem cadastro.
+    // A chave de cada firmware é o nome da pasta dele em firmwares/.
+    // Se renomear a pasta, o contador daquele firmware volta a zero.
+    const CONTADOR_API = "https://abacus.jasoncameron.dev";
+    const CONTADOR_NS = "fw-3ee921dc";
+    const emProducao = location.protocol === "https:";  // não conta testes locais
+
+    const chaveDe = (manifest) => manifest.split("/")[1];
+    const formatar = (n) => n.toLocaleString("pt-BR");
+
+    function mostrarContagem(chave, valor) {
+      const el = document.querySelector(`[data-contador="${chave}"]`);
+      if (!el) return;
+      el.querySelector("strong").textContent = formatar(valor);
+      el.querySelector("span").textContent = valor === 1 ? "instalação" : "instalações";
+      el.hidden = false;
+    }
+
+    async function carregarContagem(chave) {
+      try {
+        const r = await fetch(`${CONTADOR_API}/get/${CONTADOR_NS}/${chave}`);
+        if (r.status === 404) return mostrarContagem(chave, 0);  // ninguém instalou ainda
+        if (!r.ok) return;
+        mostrarContagem(chave, (await r.json()).value);
+      } catch { /* serviço fora do ar: só não mostra o contador */ }
+    }
+
+    async function registrarInstalacao(chave) {
+      if (!emProducao) return console.info("[contador] teste local, não contado:", chave);
+      try {
+        const r = await fetch(`${CONTADOR_API}/hit/${CONTADOR_NS}/${chave}`);
+        if (r.ok) mostrarContagem(chave, (await r.json()).value);
+      } catch { /* ignora */ }
+    }
+
+    // O ESP Web Tools abre uma janela <ewt-install-dialog> para cada instalação,
+    // mas não avisa a página quando a gravação termina. Observamos o estado dela
+    // e contamos uma vez quando chega em "finished" (gravação concluída com sucesso).
+    new MutationObserver((mudancas) => {
+      for (const m of mudancas) for (const el of m.addedNodes) {
+        if (el.nodeName !== "EWT-INSTALL-DIALOG") continue;
+        const timer = setInterval(() => {
+          if (!el.isConnected) return clearInterval(timer);
+          if (el._installState?.state === "finished") {
+            clearInterval(timer);
+            registrarInstalacao(chaveDe(el.manifestPath));
+          }
+        }, 500);
+      }
+    }).observe(document.body, { childList: true });
+
     const lista = document.getElementById("lista");
     for (const fw of firmwares) {
       const card = document.createElement("div");
@@ -129,6 +184,7 @@
           <h2></h2>
           <p></p>
           <div class="tags"></div>
+          <div class="contador" hidden>⬇ <strong></strong> <span></span></div>
         </div>
         <esp-web-install-button>
           <button slot="activate">Instalar</button>
@@ -145,7 +201,9 @@
         tags.appendChild(s);
       }
       card.querySelector("esp-web-install-button").setAttribute("manifest", fw.manifest);
+      card.querySelector(".contador").dataset.contador = chaveDe(fw.manifest);
       lista.appendChild(card);
+      carregarContagem(chaveDe(fw.manifest));
     }
   </script>
 </body>
