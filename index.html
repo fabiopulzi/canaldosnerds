@@ -43,6 +43,16 @@
       padding: 10px 18px; font-size: 1rem; cursor: pointer;
     }
     .sem-suporte { color: #d9534f; font-size: .9rem; }
+    .ajuda {
+      margin-top: 32px; background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 4px 20px;
+    }
+    .ajuda summary { cursor: pointer; font-weight: 600; padding: 12px 0; }
+    .ajuda h3 { font-size: 1rem; margin: 16px 0 4px; }
+    .ajuda p, .ajuda li { color: var(--muted); font-size: .95rem; }
+    .ajuda ul { padding-left: 20px; margin: 4px 0 12px; }
+    .ajuda a { color: var(--accent); }
+    .ajuda code { background: var(--tag); border-radius: 4px; padding: 1px 5px; font-size: .88em; }
   </style>
 </head>
 <body>
@@ -52,10 +62,43 @@
 
     <div class="aviso">
       Funciona no <strong>Chrome</strong>, <strong>Edge</strong> ou <strong>Opera</strong> no computador.
-      Se a placa não aparecer na lista, instale o driver USB dela (CP210x ou CH340) e tente de novo.
+      Mantenha esta aba visível durante a instalação. Se algo der errado, veja as dicas no fim da página.
     </div>
 
     <div class="lista" id="lista"></div>
+
+    <details class="ajuda">
+      <summary>Problemas na instalação?</summary>
+
+      <h3>A placa não aparece na lista de portas</h3>
+      <ul>
+        <li>Use um cabo USB <strong>de dados</strong>. Muitos cabos só carregam e não transmitem nada.</li>
+        <li>Instale o driver do chip USB da sua placa. O nome dele costuma estar escrito no chip perto do conector USB:
+          <ul>
+            <li><strong>CP2102 / CP210x</strong>: <a href="https://www.silabs.com/software-and-tools/usb-to-uart-bridge-vcp-drivers" target="_blank" rel="noopener">driver da Silicon Labs</a></li>
+            <li><strong>CH340 / CH341 / CH9102 / CH343</strong>: driver da WCH para <a href="https://www.wch-ic.com/downloads/CH34XSER_EXE.html" target="_blank" rel="noopener">Windows</a> ou <a href="https://www.wch-ic.com/downloads/CH34XSER_MAC_ZIP.html" target="_blank" rel="noopener">macOS</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <h3>A instalação trava no meio (ex.: parada em 77%)</h3>
+      <ul>
+        <li>Não troque de aba nem minimize o navegador enquanto grava. Em segundo plano, o Chrome deixa a página mais lenta.</li>
+        <li>Ligue a placa <strong>direto no computador</strong>. Hubs USB e adaptadores USB-C com várias portas (HDMI, cartão etc.) costumam causar esse travamento. Um adaptador simples, sem hub, funciona melhor.</li>
+        <li>Troque o cabo por um mais curto e de boa qualidade.</li>
+        <li>No Mac, placas com chip <strong>CH9102</strong> (aparecem como <code>usbserial-</code> seguido de um número longo) usam o driver genérico da Apple, que costuma travar. Instale o driver da WCH (link acima) e tente de novo.</li>
+        <li>Antes de tentar de novo: desconecte a placa, recarregue a página e reconecte.</li>
+      </ul>
+
+      <h3>Fica parado em “Connecting…”</h3>
+      <ul>
+        <li>Segure o botão <strong>BOOT</strong> da placa, clique em Instalar e solte o botão quando a gravação começar.</li>
+      </ul>
+
+      <h3>Nada resolveu?</h3>
+      <p>Grave pelo terminal com o <code>esptool</code>, usando o arquivo <code>_FULL.bin</code> no endereço <code>0x0</code>:<br>
+        <code>esptool.py --chip esp32 --port SUA_PORTA write_flash 0x0 ARQUIVO_FULL.bin</code></p>
+    </details>
   </main>
 
   <script>
