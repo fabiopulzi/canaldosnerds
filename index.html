@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Firmwares ESP32</title>
+  <script type="module" src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module"></script>
+  <style>
+    :root {
+      --bg: #f6f7f9; --card: #ffffff; --text: #1d2330; --muted: #5b6475;
+      --border: #e2e5eb; --accent: #0b74de; --accent-text: #ffffff; --tag: #eef3fb;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #12151b; --card: #1b1f27; --text: #e7eaf0; --muted: #9aa3b5;
+        --border: #2a303b; --accent: #3b93f0; --accent-text: #ffffff; --tag: #232a36;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; background: var(--bg); color: var(--text);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; line-height: 1.5;
+    }
+    main { max-width: 860px; margin: 0 auto; padding: 32px 16px 64px; }
+    h1 { margin: 0 0 4px; font-size: 1.8rem; }
+    .intro { color: var(--muted); margin: 0 0 24px; }
+    .aviso {
+      background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+      padding: 12px 16px; margin-bottom: 24px; font-size: .92rem; color: var(--muted);
+    }
+    .lista { display: grid; gap: 16px; }
+    .card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+      padding: 20px; display: flex; gap: 16px; justify-content: space-between;
+      align-items: center; flex-wrap: wrap;
+    }
+    .card h2 { margin: 0 0 4px; font-size: 1.15rem; }
+    .card p { margin: 0 0 8px; color: var(--muted); }
+    .tags { display: flex; gap: 6px; flex-wrap: wrap; }
+    .tag { background: var(--tag); border-radius: 999px; padding: 2px 10px; font-size: .8rem; }
+    esp-web-install-button button {
+      background: var(--accent); color: var(--accent-text); border: 0; border-radius: 8px;
+      padding: 10px 18px; font-size: 1rem; cursor: pointer;
+    }
+    .sem-suporte { color: #d9534f; font-size: .9rem; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Firmwares ESP32</h1>
+    <p class="intro">Conecte seu ESP32 no USB, escolha o firmware e clique em <strong>Instalar</strong>.</p>
+
+    <div class="aviso">
+      Funciona no <strong>Chrome</strong>, <strong>Edge</strong> ou <strong>Opera</strong> no computador.
+      Se a placa não aparecer na lista, instale o driver USB dela (CP210x ou CH340) e tente de novo.
+    </div>
+
+    <div class="lista" id="lista"></div>
+  </main>
+
+  <script>
+    // Para adicionar um firmware novo, copie um bloco abaixo e mude os campos.
+    const firmwares = [
+      {
+        nome: "Firmware de Exemplo",
+        descricao: "Descreva aqui o que esse firmware faz.",
+        versao: "1.0.0",
+        chips: ["ESP32"],
+        manifest: "firmwares/exemplo/manifest.json"
+      }
+    ];
+
+    const lista = document.getElementById("lista");
+    for (const fw of firmwares) {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `
+        <div>
+          <h2></h2>
+          <p></p>
+          <div class="tags"></div>
+        </div>
+        <esp-web-install-button>
+          <button slot="activate">Instalar</button>
+          <span slot="unsupported" class="sem-suporte">Navegador sem suporte. Use Chrome ou Edge.</span>
+          <span slot="not-allowed" class="sem-suporte">A página precisa estar em HTTPS.</span>
+        </esp-web-install-button>`;
+      card.querySelector("h2").textContent = fw.nome;
+      card.querySelector("p").textContent = fw.descricao;
+      const tags = card.querySelector(".tags");
+      for (const t of [`v${fw.versao}`, ...fw.chips]) {
+        const s = document.createElement("span");
+        s.className = "tag";
+        s.textContent = t;
+        tags.appendChild(s);
+      }
+      card.querySelector("esp-web-install-button").setAttribute("manifest", fw.manifest);
+      lista.appendChild(card);
+    }
+  </script>
+</body>
+</html>
