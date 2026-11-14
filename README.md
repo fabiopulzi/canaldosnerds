@@ -16,7 +16,7 @@ Site estático que usa o [ESP Web Tools](https://esphome.github.io/esp-web-tools
 
 1. Crie uma pasta em `firmwares/` (ex.: `firmwares/meu-projeto/`).
 2. Copie para ela os `.bin` gerados pelo build (veja abaixo onde ficam).
-3. Copie o `manifest.json` do exemplo e ajuste o nome, a versão, o `chipFamily` e os arquivos.
+3. Copie o `manifest.json` de `firmwares/nerd-os-devkit/` e ajuste o nome, a versão, o `chipFamily` e os arquivos.
 4. No `index.html`, adicione um bloco na lista `firmwares`.
 
 ### Onde ficam os .bin
