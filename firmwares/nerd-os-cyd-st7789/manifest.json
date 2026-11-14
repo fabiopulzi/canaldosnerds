@@ -1,0 +1,13 @@
+{
+  "name": "NERD OS — ESP32 CYD (display ST7789)",
+  "version": "2.2.4",
+  "new_install_prompt_erase": true,
+  "builds": [
+    {
+      "chipFamily": "ESP32",
+      "parts": [
+        { "path": "NERD_OS_CYD_ST7789_v2.2.4_FULL.bin", "offset": 0 }
+      ]
+    }
+  ]
+}
