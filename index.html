@@ -414,7 +414,7 @@
 
       <div class="passos">
         <div class="passo"><span class="num">1</span><div><b>Conecte o ESP32</b><span>Use um cabo USB de dados</span></div></div>
-        <div class="passo"><span class="num">2</span><div><b>Escolha o firmware</b><span>Com ou sem display</span></div></div>
+        <div class="passo"><span class="num">2</span><div><b>Escolha o firmware</b><span>Compare sua placa com a foto</span></div></div>
         <div class="passo"><span class="num">3</span><div><b>Clique em Instalar</b><span>Selecione a porta e aguarde</span></div></div>
       </div>
 
@@ -519,8 +519,21 @@
         imagemAlt: "Traseira da placa ESP32-2432S028 (CYD) com uma porta USB-C e uma Micro USB",
         selo: "2 portas USB",
         realce: { x: -1, y: 39, w: 13, h: 46 },  // posição das portas USB na foto, em %
-        identificar: "Confira a lateral da sua placa: ela precisa ter <strong>2 portas USB</strong>, uma <strong>USB-C</strong> e uma <strong>Micro USB</strong>. Placas com apenas 1 porta usam outro display e precisam de outra versão do firmware.",
+        identificar: "Confira a lateral da sua placa: ela precisa ter <strong>2 portas USB</strong>, uma <strong>USB-C</strong> e uma <strong>Micro USB</strong>. Se a sua tem só 1 porta, use a versão <strong>CYD 1 USB</strong>.",
         manifest: "firmwares/nerd-os-cyd-st7789/manifest.json"
+      },
+      {
+        nome: "NERD OS — ESP32 CYD 1 USB (com display)",
+        descricao: "Versão para a placa ESP32-2432S028 (CYD) com tela de 2,8\" e apenas 1 porta USB.",
+        versao: "2.2.4",
+        chips: ["ESP32", "CYD 2432S028", "Só Micro USB", "Display ILI9341"],
+        icone: "tela",
+        imagem: "assets/placas/esp32-cyd-2432s028-1usb.webp",
+        imagemAlt: "Traseira da placa ESP32-2432S028 (CYD) com apenas uma porta Micro USB",
+        selo: "1 porta USB",
+        realce: { x: -1, y: 56, w: 10, h: 23 },  // posição da porta Micro USB na foto, em %
+        identificar: "Confira a lateral da sua placa: ela tem <strong>apenas 1 porta USB</strong> (<strong>Micro USB</strong>). Se a sua tem 2 portas (USB-C + Micro USB), use a versão <strong>CYD 2 USB</strong>.",
+        manifest: "firmwares/nerd-os-cyd-ili9341/manifest.json"
       }
     ];
 
