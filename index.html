@@ -174,6 +174,21 @@
     }
     .card:hover { border-color: rgba(255,180,0,.55); box-shadow: 0 0 0 1px rgba(255,180,0,.2), 0 10px 30px rgba(0,0,0,.45), 0 0 30px rgba(255,170,0,.08); transform: translateY(-2px); }
     .card-topo { display: flex; gap: 14px; align-items: flex-start; }
+    .card-foto {
+      margin: -22px -22px 0; height: 220px; border-radius: 15px 15px 0 0; overflow: hidden;
+      display: grid; place-items: center; border-bottom: 1px solid var(--borda);
+      background:
+        radial-gradient(260px 160px at 50% 55%, rgba(30,139,255,.28), transparent 70%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' fill='none' stroke='%233cc8ff' stroke-opacity='.10' stroke-width='1.5'%3E%3Cpath d='M0 30h40l15 15h50l10-10h45M0 110h25l20-20h40l20 20h55M60 0v20l15 15v30M120 160v-30l-20-20v-25M30 160v-25l15-15'/%3E%3C/svg%3E"),
+        linear-gradient(180deg, #0b1220, #0a0e16);
+    }
+    .card-foto img {
+      height: 196px; width: auto;
+      filter: drop-shadow(0 10px 16px rgba(0,0,0,.65)) drop-shadow(0 0 14px rgba(60,200,255,.18));
+      transition: transform .35s ease;
+    }
+    .card:hover .card-foto img { transform: translateY(-4px) rotate(-3deg) scale(1.03); }
+    @media (prefers-reduced-motion: reduce) { .card:hover .card-foto img { transform: none; } }
     .card-icone {
       flex: none; width: 52px; height: 52px; border-radius: 12px; display: grid; place-items: center;
       background: radial-gradient(circle at 30% 30%, #1d2a44, #0c1220); border: 1px solid #2a3b5e;
@@ -304,6 +319,7 @@
       .lista { grid-template-columns: 1fr; }
       .trilho { grid-auto-columns: 82%; }
       .card { padding: 18px; }
+      .card-foto { margin: -18px -18px 0; }
       .card-rodape { flex-direction: column; align-items: stretch; }
       esp-web-install-button .btn { width: 100%; }
     }
@@ -457,13 +473,16 @@
     // ================= Firmwares =================
     // Para adicionar um firmware novo, copie um bloco abaixo e mude os campos.
     // icone: "chip" (sem display) ou "tela" (com display).
+    // imagem (opcional): foto da placa com fundo transparente, em assets/placas/.
     const firmwares = [
       {
         nome: "NERD OS — ESP32 DevKit",
-        descricao: "Versão para ESP32 clássico (DevKit), sem display.",
+        descricao: "Versão para ESP32 clássico (DevKit WROOM-32), sem display.",
         versao: "2.2.4",
-        chips: ["ESP32", "DevKit", "Sem display"],
+        chips: ["ESP32", "DevKit", "WROOM-32", "Sem display"],
         icone: "chip",
+        imagem: "assets/placas/esp32-devkit-wroom32.webp",
+        imagemAlt: "Placa ESP32 DevKit com módulo WROOM-32",
         manifest: "firmwares/nerd-os-devkit/manifest.json"
       },
       {
@@ -541,6 +560,7 @@
       const card = document.createElement("article");
       card.className = "card";
       card.innerHTML = `
+        ${fw.imagem ? `<div class="card-foto"><img loading="lazy" width="223" height="420"></div>` : ""}
         <div class="card-topo">
           <div class="card-icone"><svg><use href="#i-${fw.icone === "tela" ? "tela" : "chip"}"/></svg></div>
           <div>
@@ -558,6 +578,11 @@
             <span slot="not-allowed" class="sem-suporte">A página precisa estar em HTTPS.</span>
           </esp-web-install-button>
         </div>`;
+      if (fw.imagem) {
+        const img = card.querySelector(".card-foto img");
+        img.src = fw.imagem;
+        img.alt = fw.imagemAlt || fw.nome;
+      }
       card.querySelector("h3").textContent = fw.nome;
       card.querySelector("p").textContent = fw.descricao;
       const tags = card.querySelector(".tags");
