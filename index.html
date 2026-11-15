@@ -238,6 +238,17 @@
     esp-web-install-button .btn { min-width: 150px; }
     .sem-suporte { color: var(--vermelho); font-size: .88rem; font-weight: 600; }
 
+    .disclaimer {
+      display: flex; gap: 14px; align-items: flex-start; margin: 0 0 18px;
+      background: linear-gradient(90deg, rgba(255,138,0,.12), rgba(255,180,0,.04));
+      border: 1px solid rgba(255,160,0,.4); border-left: 4px solid var(--ouro-2);
+      border-radius: var(--raio); padding: 14px 18px;
+    }
+    .disclaimer > svg { flex: none; width: 24px; height: 24px; color: var(--ouro); margin-top: 2px; }
+    .disclaimer b { display: block; color: var(--ouro-claro); margin-bottom: 2px; }
+    .disclaimer p { margin: 0; color: #e4dccb; font-size: .93rem; }
+    .disclaimer strong { color: #fff3d6; }
+    .disclaimer a { color: var(--ouro-claro); white-space: nowrap; }
     .aviso {
       display: flex; gap: 10px; align-items: flex-start; margin-top: 18px;
       background: rgba(30,139,255,.07); border: 1px solid rgba(30,139,255,.3);
@@ -364,6 +375,7 @@
     <symbol id="i-yt" viewBox="0 0 24 24"><path fill="currentColor" d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.7 15.1V8.9l5.8 3.1-5.8 3.1z"/></symbol>
     <symbol id="i-play" viewBox="0 0 24 24"><path fill="currentColor" d="M8 5.5v13l11-6.5z"/></symbol>
     <symbol id="i-down" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M12 4v12M6.5 11 12 16.5 17.5 11M5 20h14"/></symbol>
+    <symbol id="i-alerta" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M12 3 2 20.5h20z"/><path stroke="currentColor" stroke-width="2.4" stroke-linecap="round" d="M12 9.5v5M12 17.6v.2"/></symbol>
     <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path stroke="currentColor" stroke-width="2.4" stroke-linecap="round" d="M12 11v6M12 7.3v.2"/></symbol>
     <symbol id="i-chip" viewBox="0 0 32 32"><rect x="8" y="8" width="16" height="16" rx="2" fill="#1b2a47" stroke="#3cc8ff" stroke-width="1.6"/><rect x="12" y="12" width="8" height="8" rx="1" fill="#ffb400"/><path stroke="#3cc8ff" stroke-width="1.6" stroke-linecap="round" d="M12 4v4M16 4v4M20 4v4M12 24v4M16 24v4M20 24v4M4 12h4M4 16h4M4 20h4M24 12h4M24 16h4M24 20h4"/></symbol>
     <symbol id="i-tela" viewBox="0 0 32 32"><rect x="3" y="6" width="26" height="18" rx="2.5" fill="#0a1a3a" stroke="#3cc8ff" stroke-width="1.6"/><path stroke="#ffb400" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" d="M7 19l4-4 3 3 5-6 4 3"/><path stroke="#3cc8ff" stroke-width="1.6" stroke-linecap="round" d="M12 28h8"/></symbol>
@@ -423,6 +435,14 @@
         <div class="passo"><span class="num">1</span><div><b>Conecte o ESP32</b><span>Use um cabo USB de dados</span></div></div>
         <div class="passo"><span class="num">2</span><div><b>Escolha o firmware</b><span>Compare sua placa com a foto</span></div></div>
         <div class="passo"><span class="num">3</span><div><b>Clique em Instalar</b><span>Selecione a porta e aguarde</span></div></div>
+      </div>
+
+      <div class="disclaimer" role="note">
+        <svg><use href="#i-alerta"/></svg>
+        <div>
+          <b>Projeto de estudo, gratuito e sem garantias</b>
+          <p>Os firmwares do NERD OS são desenvolvidos como <strong>projeto de estudo</strong> e disponibilizados <strong>gratuitamente</strong>. Ao instalar, você assume os riscos do procedimento: o site e o Canal dos Nerds <strong>não se responsabilizam por possíveis danos</strong> às placas ou a outros equipamentos causados pelo uso deste software. <a href="termos.html">Leia os termos</a>.</p>
+        </div>
       </div>
 
       <div class="lista" id="lista"></div>
