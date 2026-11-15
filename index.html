@@ -1,10 +1,12 @@
 <!doctype html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Firmwares Oficiais · Canal dos Nerds</title>
-  <meta name="description" content="Instale os firmwares oficiais do Canal dos Nerds (NERD OS) no seu ESP32 direto pelo navegador. Mineração de criptomoedas com ESP32.">
+  <meta name="description"
+    content="Instale os firmwares oficiais do Canal dos Nerds (NERD OS) no seu ESP32 direto pelo navegador. Mineração de criptomoedas com ESP32.">
   <meta name="theme-color" content="#07090d">
   <meta property="og:title" content="Firmwares Oficiais · Canal dos Nerds">
   <meta property="og:description" content="Instale o NERD OS no seu ESP32 direto pelo navegador, sem programas.">
@@ -16,7 +18,8 @@
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Russo+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Russo+One&display=swap"
+    rel="stylesheet">
   <!-- Versão fixa: o contador de instalações depende do funcionamento interno desta versão. -->
   <script type="module" src="https://unpkg.com/esp-web-tools@10.5.2/dist/web/install-button.js?module"></script>
   <style>
@@ -38,352 +41,1153 @@
       --raio: 14px;
       --fonte-titulo: "Russo One", "Arial Black", system-ui, sans-serif;
     }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0; background: var(--bg); color: var(--texto);
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-      line-height: 1.55; -webkit-font-smoothing: antialiased;
+
+    * {
+      box-sizing: border-box;
     }
-    a { color: var(--ciano); }
-    img { max-width: 100%; display: block; }
-    .container { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--texto);
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--ciano);
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
 
     /* ---------- Testeira ---------- */
-    .testeira { padding: 28px 0 8px; }
+    .testeira {
+      padding: 28px 0 8px;
+    }
+
     .placa {
-      position: relative; border-radius: 18px; overflow: hidden;
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
       border: 3px solid #05070a;
       background:
-        radial-gradient(900px 300px at 15% 0%, rgba(255,180,0,.14), transparent 60%),
-        radial-gradient(700px 300px at 100% 100%, rgba(30,139,255,.16), transparent 60%),
+        radial-gradient(900px 300px at 15% 0%, rgba(255, 180, 0, .14), transparent 60%),
+        radial-gradient(700px 300px at 100% 100%, rgba(30, 139, 255, .16), transparent 60%),
         url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' fill='none' stroke='%23ffb400' stroke-opacity='.16' stroke-width='1.5'%3E%3Cpath d='M0 30h40l15 15h50l10-10h45M0 110h25l20-20h40l20 20h55M60 0v20l15 15v30M120 160v-30l-20-20v-25M30 160v-25l15-15'/%3E%3Cg fill='%23ffb400' fill-opacity='.35' stroke='none'%3E%3Ccircle cx='40' cy='30' r='3'/%3E%3Ccircle cx='105' cy='45' r='3'/%3E%3Ccircle cx='85' cy='90' r='3'/%3E%3Ccircle cx='75' cy='65' r='3'/%3E%3Ccircle cx='100' cy='85' r='3'/%3E%3Ccircle cx='45' cy='120' r='3'/%3E%3C/g%3E%3C/svg%3E"),
         linear-gradient(180deg, #0d0f14, #07090d);
       box-shadow:
-        0 0 0 1px rgba(60,200,255,.25),
-        0 0 28px rgba(30,139,255,.55),
-        0 0 80px rgba(30,139,255,.28);
+        0 0 0 1px rgba(60, 200, 255, .25),
+        0 0 28px rgba(30, 139, 255, .55),
+        0 0 80px rgba(30, 139, 255, .28);
     }
+
     .topo {
-      display: grid; grid-template-columns: auto 1fr auto; align-items: center;
-      gap: 28px; padding: 28px 32px 22px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 28px;
+      padding: 28px 32px 22px;
     }
+
     .logo {
-      width: 190px; height: 190px;
-      filter: drop-shadow(0 0 18px rgba(255,180,0,.35)) drop-shadow(0 6px 14px rgba(0,0,0,.6));
+      width: 190px;
+      height: 190px;
+      filter: drop-shadow(0 0 18px rgba(255, 180, 0, .35)) drop-shadow(0 6px 14px rgba(0, 0, 0, .6));
     }
+
     .selo {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(61,220,132,.1); color: var(--verde);
-      border: 1px solid rgba(61,220,132,.4); border-radius: 999px;
-      padding: 4px 12px; font-size: .78rem; font-weight: 700;
-      letter-spacing: .06em; text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(61, 220, 132, .1);
+      color: var(--verde);
+      border: 1px solid rgba(61, 220, 132, .4);
+      border-radius: 999px;
+      padding: 4px 12px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
     }
-    .selo svg { width: 14px; height: 14px; }
+
+    .selo svg {
+      width: 14px;
+      height: 14px;
+    }
+
     h1 {
-      font-family: var(--fonte-titulo); font-weight: 400; margin: 12px 0 6px;
-      font-size: clamp(2rem, 4.6vw, 3.4rem); line-height: 1.02; letter-spacing: .01em;
+      font-family: var(--fonte-titulo);
+      font-weight: 400;
+      margin: 12px 0 6px;
+      font-size: clamp(2rem, 4.6vw, 3.4rem);
+      line-height: 1.02;
+      letter-spacing: .01em;
     }
-    h1 .linha-1 { display: block; color: #f3f5f9; text-shadow: 0 2px 0 #6b7486, 0 4px 10px rgba(0,0,0,.6); }
+
+    h1 .linha-1 {
+      display: block;
+      color: #f3f5f9;
+      text-shadow: 0 2px 0 #6b7486, 0 4px 10px rgba(0, 0, 0, .6);
+    }
+
     h1 .linha-2 {
       display: block;
       background: linear-gradient(180deg, var(--ouro-claro) 0%, var(--ouro) 45%, var(--ouro-2) 100%);
-      -webkit-background-clip: text; background-clip: text; color: transparent;
-      filter: drop-shadow(0 3px 0 #7a3d00) drop-shadow(0 0 16px rgba(255,160,0,.35));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      filter: drop-shadow(0 3px 0 #7a3d00) drop-shadow(0 0 16px rgba(255, 160, 0, .35));
     }
-    .subtitulo { color: #c9d2e1; margin: 8px 0 18px; max-width: 540px; font-size: 1.02rem; }
-    .ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .subtitulo {
+      color: #c9d2e1;
+      margin: 8px 0 18px;
+      max-width: 540px;
+      font-size: 1.02rem;
+    }
+
+    .ctas {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
     .btn {
-      display: inline-flex; align-items: center; gap: 8px; justify-content: center;
-      border-radius: 10px; padding: 12px 20px; font-weight: 700; font-size: 1rem;
-      text-decoration: none; cursor: pointer; border: 0; font-family: inherit;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      justify-content: center;
+      border-radius: 10px;
+      padding: 12px 20px;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      cursor: pointer;
+      border: 0;
+      font-family: inherit;
       transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
     }
-    .btn:hover { transform: translateY(-1px); }
-    .btn:focus-visible { outline: 3px solid var(--ciano); outline-offset: 2px; }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn:focus-visible {
+      outline: 3px solid var(--ciano);
+      outline-offset: 2px;
+    }
+
     .btn-ouro {
       background: linear-gradient(180deg, var(--ouro-claro), var(--ouro) 50%, var(--ouro-2));
-      color: #1a1000; box-shadow: 0 4px 18px rgba(255,150,0,.35), inset 0 1px 0 rgba(255,255,255,.5);
+      color: #1a1000;
+      box-shadow: 0 4px 18px rgba(255, 150, 0, .35), inset 0 1px 0 rgba(255, 255, 255, .5);
     }
-    .btn-ouro:hover { box-shadow: 0 6px 24px rgba(255,150,0,.5), inset 0 1px 0 rgba(255,255,255,.5); }
-    .btn-yt { background: #ff0033; color: #fff; box-shadow: 0 4px 18px rgba(255,0,51,.3); }
-    .btn-yt:hover { background: #ff1f4b; }
-    .btn svg { width: 20px; height: 20px; flex: none; }
-    .icones { display: flex; align-items: flex-end; gap: 14px; }
-    .moeda { width: 150px; height: 150px; filter: drop-shadow(0 0 18px rgba(30,139,255,.55)) drop-shadow(0 8px 14px rgba(0,0,0,.6)); animation: flutuar 5s ease-in-out infinite; }
-    .grafico { width: 78px; height: 78px; }
-    @keyframes flutuar { 50% { transform: translateY(-6px) rotate(-4deg); } }
-    @media (prefers-reduced-motion: reduce) { .moeda { animation: none; } html { scroll-behavior: auto; } }
+
+    .btn-ouro:hover {
+      box-shadow: 0 6px 24px rgba(255, 150, 0, .5), inset 0 1px 0 rgba(255, 255, 255, .5);
+    }
+
+    .btn-yt {
+      background: #ff0033;
+      color: #fff;
+      box-shadow: 0 4px 18px rgba(255, 0, 51, .3);
+    }
+
+    .btn-yt:hover {
+      background: #ff1f4b;
+    }
+
+    .btn svg {
+      width: 20px;
+      height: 20px;
+      flex: none;
+    }
+
+    .icones {
+      display: flex;
+      align-items: flex-end;
+      gap: 14px;
+    }
+
+    .moeda {
+      width: 150px;
+      height: 150px;
+      filter: drop-shadow(0 0 18px rgba(30, 139, 255, .55)) drop-shadow(0 8px 14px rgba(0, 0, 0, .6));
+      animation: flutuar 5s ease-in-out infinite;
+    }
+
+    .grafico {
+      width: 78px;
+      height: 78px;
+    }
+
+    @keyframes flutuar {
+      50% {
+        transform: translateY(-6px) rotate(-4deg);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .moeda {
+        animation: none;
+      }
+
+      html {
+        scroll-behavior: auto;
+      }
+    }
 
     .faixa {
-      margin: 0 32px 26px; padding: 10px 18px; text-align: center;
-      font-family: var(--fonte-titulo); font-size: clamp(.82rem, 1.8vw, 1.15rem);
-      letter-spacing: .06em; color: #f6f7fa; text-transform: uppercase;
+      margin: 0 32px 26px;
+      padding: 10px 18px;
+      text-align: center;
+      font-family: var(--fonte-titulo);
+      font-size: clamp(.82rem, 1.8vw, 1.15rem);
+      letter-spacing: .06em;
+      color: #f6f7fa;
+      text-transform: uppercase;
       background: linear-gradient(180deg, #2a2210, #120e05);
-      border: 2px solid var(--ouro); border-radius: 12px;
-      box-shadow: 0 0 0 3px #0b0a07, 0 0 18px rgba(255,180,0,.25), inset 0 0 18px rgba(255,180,0,.12);
+      border: 2px solid var(--ouro);
+      border-radius: 12px;
+      box-shadow: 0 0 0 3px #0b0a07, 0 0 18px rgba(255, 180, 0, .25), inset 0 0 18px rgba(255, 180, 0, .12);
     }
-    .faixa b { color: var(--ouro); font-weight: 400; }
+
+    .faixa b {
+      color: var(--ouro);
+      font-weight: 400;
+    }
 
     /* ---------- Painel estilo LCD ---------- */
     .lcd {
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;
-      margin: 26px 0 8px; padding: 12px; border-radius: var(--raio);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 26px 0 8px;
+      padding: 12px;
+      border-radius: var(--raio);
       background: linear-gradient(180deg, #0b1630, #071025);
-      border: 2px solid #1b3a78; box-shadow: inset 0 0 30px rgba(30,139,255,.15), 0 0 0 4px #0b0e14;
+      border: 2px solid #1b3a78;
+      box-shadow: inset 0 0 30px rgba(30, 139, 255, .15), 0 0 0 4px #0b0e14;
     }
+
     .lcd div {
-      background: var(--lcd); border: 1px solid #1f4fa8; border-radius: 8px;
-      padding: 8px 12px; text-align: center;
+      background: var(--lcd);
+      border: 1px solid #1f4fa8;
+      border-radius: 8px;
+      padding: 8px 12px;
+      text-align: center;
     }
-    .lcd small { display: block; color: #8fb6ff; font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
-    .lcd strong { display: block; font-family: var(--fonte-titulo); font-weight: 400; font-size: 1.3rem; color: var(--ouro-claro); font-variant-numeric: tabular-nums; }
-    .lcd .ok { color: var(--verde); }
+
+    .lcd small {
+      display: block;
+      color: #8fb6ff;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .lcd strong {
+      display: block;
+      font-family: var(--fonte-titulo);
+      font-weight: 400;
+      font-size: 1.3rem;
+      color: var(--ouro-claro);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .lcd .ok {
+      color: var(--verde);
+    }
 
     /* ---------- Seções ---------- */
-    section { padding: 40px 0 8px; }
-    .cabeca-secao { display: flex; align-items: end; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 18px; }
+    section {
+      padding: 40px 0 8px;
+    }
+
+    .cabeca-secao {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
     h2 {
-      font-family: var(--fonte-titulo); font-weight: 400; font-size: clamp(1.4rem, 3vw, 1.9rem);
-      margin: 0; display: flex; align-items: center; gap: 12px;
+      font-family: var(--fonte-titulo);
+      font-weight: 400;
+      font-size: clamp(1.4rem, 3vw, 1.9rem);
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
+
     h2::before {
-      content: ""; width: 6px; height: 1.1em; border-radius: 3px;
-      background: linear-gradient(180deg, var(--ouro), var(--ouro-2)); box-shadow: 0 0 12px rgba(255,170,0,.5);
+      content: "";
+      width: 6px;
+      height: 1.1em;
+      border-radius: 3px;
+      background: linear-gradient(180deg, var(--ouro), var(--ouro-2));
+      box-shadow: 0 0 12px rgba(255, 170, 0, .5);
     }
-    .cabeca-secao p { margin: 4px 0 0; color: var(--suave); }
+
+    .cabeca-secao p {
+      margin: 4px 0 0;
+      color: var(--suave);
+    }
 
     /* Passos */
-    .passos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 22px; }
-    .passo {
-      display: flex; gap: 12px; align-items: center; background: var(--painel);
-      border: 1px solid var(--borda); border-radius: var(--raio); padding: 14px 16px;
+    .passos {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 22px;
     }
+
+    .passo {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      background: var(--painel);
+      border: 1px solid var(--borda);
+      border-radius: var(--raio);
+      padding: 14px 16px;
+    }
+
     .passo .num {
-      flex: none; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center;
-      font-family: var(--fonte-titulo); color: #1a1000;
+      flex: none;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-family: var(--fonte-titulo);
+      color: #1a1000;
       background: linear-gradient(180deg, var(--ouro-claro), var(--ouro-2));
     }
-    .passo b { display: block; font-size: .95rem; }
-    .passo span { color: var(--suave); font-size: .86rem; }
+
+    .passo b {
+      display: block;
+      font-size: .95rem;
+    }
+
+    .passo span {
+      color: var(--suave);
+      font-size: .86rem;
+    }
 
     /* Cartões de firmware */
-    .lista { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 18px; }
+    .lista {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 18px;
+    }
+
     .card {
-      position: relative; display: flex; flex-direction: column; gap: 14px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
       background: linear-gradient(180deg, var(--painel-2), var(--painel));
-      border: 1px solid var(--borda); border-radius: 16px; padding: 22px;
+      border: 1px solid var(--borda);
+      border-radius: 16px;
+      padding: 22px;
       transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
     }
-    .card:hover { border-color: rgba(255,180,0,.55); box-shadow: 0 0 0 1px rgba(255,180,0,.2), 0 10px 30px rgba(0,0,0,.45), 0 0 30px rgba(255,170,0,.08); transform: translateY(-2px); }
-    .card-topo { display: flex; gap: 14px; align-items: flex-start; }
+
+    .card:hover {
+      border-color: rgba(255, 180, 0, .55);
+      box-shadow: 0 0 0 1px rgba(255, 180, 0, .2), 0 10px 30px rgba(0, 0, 0, .45), 0 0 30px rgba(255, 170, 0, .08);
+      transform: translateY(-2px);
+    }
+
+    .card-topo {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
     .card-foto {
-      margin: -22px -22px 0; height: 220px; border-radius: 15px 15px 0 0; overflow: hidden;
-      display: grid; place-items: center; border-bottom: 1px solid var(--borda);
+      margin: -22px -22px 0;
+      height: 220px;
+      border-radius: 15px 15px 0 0;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      border-bottom: 1px solid var(--borda);
       background:
-        radial-gradient(260px 160px at 50% 55%, rgba(30,139,255,.28), transparent 70%),
+        radial-gradient(260px 160px at 50% 55%, rgba(30, 139, 255, .28), transparent 70%),
         url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' fill='none' stroke='%233cc8ff' stroke-opacity='.10' stroke-width='1.5'%3E%3Cpath d='M0 30h40l15 15h50l10-10h45M0 110h25l20-20h40l20 20h55M60 0v20l15 15v30M120 160v-30l-20-20v-25M30 160v-25l15-15'/%3E%3C/svg%3E"),
         linear-gradient(180deg, #0b1220, #0a0e16);
     }
-    .card-foto { position: relative; }
-    .foto-moldura { position: relative; line-height: 0; transition: transform .35s ease; }
-    .foto-moldura img {
-      height: 196px; width: auto;
-      filter: drop-shadow(0 10px 16px rgba(0,0,0,.65)) drop-shadow(0 0 14px rgba(60,200,255,.18));
+
+    .card-foto {
+      position: relative;
     }
-    .card-foto.paisagem .foto-moldura { width: min(330px, 84%); }
-    .card-foto.paisagem .foto-moldura img { width: 100%; height: auto; }
-    .card:hover .foto-moldura { transform: translateY(-4px) rotate(-2deg) scale(1.03); }
+
+    .foto-moldura {
+      position: relative;
+      line-height: 0;
+      transition: transform .35s ease;
+    }
+
+    .foto-moldura img {
+      height: 196px;
+      width: auto;
+      filter: drop-shadow(0 10px 16px rgba(0, 0, 0, .65)) drop-shadow(0 0 14px rgba(60, 200, 255, .18));
+    }
+
+    .card-foto.paisagem .foto-moldura {
+      width: min(330px, 84%);
+    }
+
+    .card-foto.paisagem .foto-moldura img {
+      width: 100%;
+      height: auto;
+    }
+
+    .card:hover .foto-moldura {
+      transform: translateY(-4px) rotate(-2deg) scale(1.03);
+    }
+
     /* Moldura pulsante que aponta um detalhe da placa (ex.: as portas USB) */
     .realce {
-      position: absolute; border: 2px solid var(--ouro); border-radius: 8px;
-      box-shadow: 0 0 0 3px rgba(255,180,0,.25), 0 0 16px rgba(255,180,0,.6);
+      position: absolute;
+      border: 2px solid var(--ouro);
+      border-radius: 8px;
+      box-shadow: 0 0 0 3px rgba(255, 180, 0, .25), 0 0 16px rgba(255, 180, 0, .6);
       animation: pulsar 1.8s ease-in-out infinite;
     }
-    @keyframes pulsar { 50% { box-shadow: 0 0 0 6px rgba(255,180,0,.12), 0 0 24px rgba(255,180,0,.85); } }
+
+    @keyframes pulsar {
+      50% {
+        box-shadow: 0 0 0 6px rgba(255, 180, 0, .12), 0 0 24px rgba(255, 180, 0, .85);
+      }
+    }
+
     .foto-selo {
-      position: absolute; left: 12px; bottom: 12px; display: inline-flex; align-items: center; gap: 6px;
-      background: rgba(10,12,18,.88); border: 1px solid var(--ouro); color: var(--ouro-claro);
-      border-radius: 999px; padding: 4px 12px; font-size: .78rem; font-weight: 700;
-      box-shadow: 0 4px 14px rgba(0,0,0,.5); line-height: 1.4;
+      position: absolute;
+      left: 12px;
+      bottom: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(10, 12, 18, .88);
+      border: 1px solid var(--ouro);
+      color: var(--ouro-claro);
+      border-radius: 999px;
+      padding: 4px 12px;
+      font-size: .78rem;
+      font-weight: 700;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, .5);
+      line-height: 1.4;
     }
-    .foto-selo svg { width: 14px; height: 14px; }
-    @media (prefers-reduced-motion: reduce) { .card:hover .foto-moldura { transform: none; } .realce { animation: none; } }
+
+    .foto-selo svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .card:hover .foto-moldura {
+        transform: none;
+      }
+
+      .realce {
+        animation: none;
+      }
+    }
+
     .identificar {
-      display: flex; gap: 10px; align-items: flex-start; margin: 0;
-      background: rgba(255,180,0,.07); border: 1px solid rgba(255,180,0,.35); border-radius: 10px;
-      padding: 10px 12px; font-size: .9rem; color: #e9dcc0;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      margin: 0;
+      background: rgba(255, 180, 0, .07);
+      border: 1px solid rgba(255, 180, 0, .35);
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: .9rem;
+      color: #e9dcc0;
     }
-    .identificar svg { flex: none; width: 18px; height: 18px; color: var(--ouro); margin-top: 2px; }
-    .identificar strong { color: var(--ouro-claro); white-space: nowrap; }
+
+    .identificar svg {
+      flex: none;
+      width: 18px;
+      height: 18px;
+      color: var(--ouro);
+      margin-top: 2px;
+    }
+
+    .identificar strong {
+      color: var(--ouro-claro);
+      white-space: nowrap;
+    }
+
     .card-icone {
-      flex: none; width: 52px; height: 52px; border-radius: 12px; display: grid; place-items: center;
-      background: radial-gradient(circle at 30% 30%, #1d2a44, #0c1220); border: 1px solid #2a3b5e;
+      flex: none;
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: radial-gradient(circle at 30% 30%, #1d2a44, #0c1220);
+      border: 1px solid #2a3b5e;
     }
-    .card-icone svg { width: 30px; height: 30px; }
+
+    .card-icone svg {
+      width: 30px;
+      height: 30px;
+    }
+
     .oficial {
-      display: inline-flex; align-items: center; gap: 6px; font-size: .7rem; font-weight: 700;
-      letter-spacing: .08em; text-transform: uppercase; color: var(--ouro);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--ouro);
     }
-    .card h3 { margin: 2px 0 0; font-size: 1.2rem; line-height: 1.25; }
-    .card p { margin: 0; color: var(--suave); font-size: .95rem; }
-    .tags { display: flex; gap: 6px; flex-wrap: wrap; }
+
+    .card h3 {
+      margin: 2px 0 0;
+      font-size: 1.2rem;
+      line-height: 1.25;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--suave);
+      font-size: .95rem;
+    }
+
+    .tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
     .tag {
-      background: #18202f; border: 1px solid #263147; color: #c8d1e0;
-      border-radius: 999px; padding: 2px 10px; font-size: .78rem; font-weight: 500;
+      background: #18202f;
+      border: 1px solid #263147;
+      color: #c8d1e0;
+      border-radius: 999px;
+      padding: 2px 10px;
+      font-size: .78rem;
+      font-weight: 500;
     }
-    .tag.versao { background: rgba(255,180,0,.12); border-color: rgba(255,180,0,.45); color: var(--ouro-claro); }
-    .card-rodape { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding-top: 6px; border-top: 1px dashed #263147; }
-    .contador { font-size: .9rem; color: var(--suave); display: inline-flex; align-items: center; gap: 6px; padding-top: 10px; }
-    .contador strong { color: var(--texto); font-variant-numeric: tabular-nums; }
-    .contador svg { width: 16px; height: 16px; color: var(--verde); }
-    esp-web-install-button { padding-top: 10px; }
-    esp-web-install-button .btn { min-width: 150px; }
-    .sem-suporte { color: var(--vermelho); font-size: .88rem; font-weight: 600; }
+
+    .tag.versao {
+      background: rgba(255, 180, 0, .12);
+      border-color: rgba(255, 180, 0, .45);
+      color: var(--ouro-claro);
+    }
+
+    .card-rodape {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding-top: 6px;
+      border-top: 1px dashed #263147;
+    }
+
+    .contador {
+      font-size: .9rem;
+      color: var(--suave);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding-top: 10px;
+    }
+
+    .contador strong {
+      color: var(--texto);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .contador svg {
+      width: 16px;
+      height: 16px;
+      color: var(--verde);
+    }
+
+    esp-web-install-button {
+      padding-top: 10px;
+    }
+
+    esp-web-install-button .btn {
+      min-width: 150px;
+    }
+
+    .sem-suporte {
+      color: var(--vermelho);
+      font-size: .88rem;
+      font-weight: 600;
+    }
 
     .disclaimer {
-      display: flex; gap: 14px; align-items: flex-start; margin: 0 0 18px;
-      background: linear-gradient(90deg, rgba(255,138,0,.12), rgba(255,180,0,.04));
-      border: 1px solid rgba(255,160,0,.4); border-left: 4px solid var(--ouro-2);
-      border-radius: var(--raio); padding: 14px 18px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      margin: 0 0 18px;
+      background: linear-gradient(90deg, rgba(255, 138, 0, .12), rgba(255, 180, 0, .04));
+      border: 1px solid rgba(255, 160, 0, .4);
+      border-left: 4px solid var(--ouro-2);
+      border-radius: var(--raio);
+      padding: 14px 18px;
     }
-    .disclaimer > svg { flex: none; width: 24px; height: 24px; color: var(--ouro); margin-top: 2px; }
-    .disclaimer b { display: block; color: var(--ouro-claro); margin-bottom: 2px; }
-    .disclaimer p { margin: 0; color: #e4dccb; font-size: .93rem; }
-    .disclaimer strong { color: #fff3d6; }
-    .disclaimer a { color: var(--ouro-claro); white-space: nowrap; }
+
+    .disclaimer>svg {
+      flex: none;
+      width: 24px;
+      height: 24px;
+      color: var(--ouro);
+      margin-top: 2px;
+    }
+
+    .disclaimer b {
+      display: block;
+      color: var(--ouro-claro);
+      margin-bottom: 2px;
+    }
+
+    .disclaimer p {
+      margin: 0;
+      color: #e4dccb;
+      font-size: .93rem;
+    }
+
+    .disclaimer strong {
+      color: #fff3d6;
+    }
+
+    .disclaimer a {
+      color: var(--ouro-claro);
+      white-space: nowrap;
+    }
+
     .aviso {
-      display: flex; gap: 10px; align-items: flex-start; margin-top: 18px;
-      background: rgba(30,139,255,.07); border: 1px solid rgba(30,139,255,.3);
-      border-radius: var(--raio); padding: 12px 16px; font-size: .92rem; color: #c3d3ee;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      margin-top: 18px;
+      background: rgba(30, 139, 255, .07);
+      border: 1px solid rgba(30, 139, 255, .3);
+      border-radius: var(--raio);
+      padding: 12px 16px;
+      font-size: .92rem;
+      color: #c3d3ee;
     }
-    .aviso svg { flex: none; width: 20px; height: 20px; color: var(--ciano); margin-top: 1px; }
+
+    .aviso svg {
+      flex: none;
+      width: 20px;
+      height: 20px;
+      color: var(--ciano);
+      margin-top: 1px;
+    }
 
     /* Ajuda */
-    .ajuda { margin-top: 14px; background: var(--painel); border: 1px solid var(--borda); border-radius: var(--raio); padding: 2px 20px; }
-    .ajuda summary { cursor: pointer; font-weight: 700; padding: 14px 0; list-style: none; display: flex; align-items: center; justify-content: space-between; }
-    .ajuda summary::-webkit-details-marker { display: none; }
-    .ajuda summary::after { content: "+"; font-size: 1.4rem; color: var(--ouro); line-height: 1; }
-    .ajuda[open] summary::after { content: "−"; }
-    .ajuda h4 { font-size: 1rem; margin: 18px 0 4px; color: var(--ouro-claro); }
-    .ajuda p, .ajuda li { color: var(--suave); font-size: .95rem; }
-    .ajuda ul { padding-left: 20px; margin: 4px 0 12px; }
-    .ajuda code { background: #18202f; border-radius: 4px; padding: 1px 6px; font-size: .86em; color: #e6ebf3; word-break: break-word; }
+    .ajuda {
+      margin-top: 14px;
+      background: var(--painel);
+      border: 1px solid var(--borda);
+      border-radius: var(--raio);
+      padding: 2px 20px;
+    }
+
+    .ajuda summary {
+      cursor: pointer;
+      font-weight: 700;
+      padding: 14px 0;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .ajuda summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .ajuda summary::after {
+      content: "+";
+      font-size: 1.4rem;
+      color: var(--ouro);
+      line-height: 1;
+    }
+
+    .ajuda[open] summary::after {
+      content: "−";
+    }
+
+    .ajuda h4 {
+      font-size: 1rem;
+      margin: 18px 0 4px;
+      color: var(--ouro-claro);
+    }
+
+    .ajuda p,
+    .ajuda li {
+      color: var(--suave);
+      font-size: .95rem;
+    }
+
+    .ajuda ul {
+      padding-left: 20px;
+      margin: 4px 0 12px;
+    }
+
+    .ajuda code {
+      background: #18202f;
+      border-radius: 4px;
+      padding: 1px 6px;
+      font-size: .86em;
+      color: #e6ebf3;
+      word-break: break-word;
+    }
 
     /* ---------- Carrossel de vídeos ---------- */
-    .carrossel { position: relative; }
-    .trilho {
-      display: grid; grid-auto-flow: column; grid-auto-columns: calc((100% - 3 * 16px) / 4);
-      gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth;
-      padding: 4px 2px 14px; scrollbar-width: thin; scrollbar-color: #2a3346 transparent;
+    .carrossel {
+      position: relative;
     }
+
+    .trilho {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: calc((100% - 3 * 16px) / 4);
+      gap: 16px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      padding: 4px 2px 14px;
+      scrollbar-width: thin;
+      scrollbar-color: #2a3346 transparent;
+    }
+
     .video {
-      scroll-snap-align: start; background: var(--painel); border: 1px solid var(--borda);
-      border-radius: var(--raio); overflow: hidden; cursor: pointer; text-align: left;
-      color: inherit; font: inherit; padding: 0; display: flex; flex-direction: column;
+      scroll-snap-align: start;
+      background: var(--painel);
+      border: 1px solid var(--borda);
+      border-radius: var(--raio);
+      overflow: hidden;
+      cursor: pointer;
+      text-align: left;
+      color: inherit;
+      font: inherit;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
       transition: border-color .2s ease, transform .2s ease;
     }
-    .video:hover, .video:focus-visible { border-color: rgba(255,180,0,.6); transform: translateY(-2px); outline: none; }
-    .thumb { position: relative; aspect-ratio: 16 / 9; background: #111; }
-    .thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+    .video:hover,
+    .video:focus-visible {
+      border-color: rgba(255, 180, 0, .6);
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    .thumb {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      background: #111;
+    }
+
+    .thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
     .thumb .play {
-      position: absolute; inset: 0; margin: auto; width: 54px; height: 38px; border-radius: 10px;
-      background: rgba(255,0,51,.92); display: grid; place-items: center; opacity: .9;
-      box-shadow: 0 4px 14px rgba(0,0,0,.5); transition: transform .2s ease;
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      width: 54px;
+      height: 38px;
+      border-radius: 10px;
+      background: rgba(255, 0, 51, .92);
+      display: grid;
+      place-items: center;
+      opacity: .9;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, .5);
+      transition: transform .2s ease;
     }
-    .video:hover .play { transform: scale(1.1); }
-    .thumb .play svg { width: 20px; height: 20px; color: #fff; }
-    .video-info { padding: 12px 14px 14px; display: flex; flex-direction: column; gap: 6px; }
+
+    .video:hover .play {
+      transform: scale(1.1);
+    }
+
+    .thumb .play svg {
+      width: 20px;
+      height: 20px;
+      color: #fff;
+    }
+
+    .video-info {
+      padding: 12px 14px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
     .video-info b {
-      font-size: .92rem; font-weight: 600; line-height: 1.35;
-      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+      font-size: .92rem;
+      font-weight: 600;
+      line-height: 1.35;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
-    .video-info span { font-size: .78rem; color: var(--suave); }
+
+    .video-info span {
+      font-size: .78rem;
+      color: var(--suave);
+    }
+
     .video.ver-mais {
-      align-items: center; justify-content: center; gap: 10px; padding: 20px; text-decoration: none;
-      background: linear-gradient(180deg, #1a0b0f, var(--painel)); text-align: center; font-weight: 700;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 20px;
+      text-decoration: none;
+      background: linear-gradient(180deg, #1a0b0f, var(--painel));
+      text-align: center;
+      font-weight: 700;
     }
-    .video.ver-mais svg { width: 42px; height: 42px; color: #ff0033; }
+
+    .video.ver-mais svg {
+      width: 42px;
+      height: 42px;
+      color: #ff0033;
+    }
+
     .seta {
-      position: absolute; top: calc(50% - 32px); width: 42px; height: 42px; border-radius: 50%;
-      border: 1px solid var(--borda); background: rgba(14,18,26,.92); color: var(--texto);
-      display: grid; place-items: center; cursor: pointer; z-index: 2;
-      box-shadow: 0 4px 14px rgba(0,0,0,.5); transition: border-color .2s ease, opacity .2s ease;
+      position: absolute;
+      top: calc(50% - 32px);
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid var(--borda);
+      background: rgba(14, 18, 26, .92);
+      color: var(--texto);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      z-index: 2;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, .5);
+      transition: border-color .2s ease, opacity .2s ease;
     }
-    .seta:hover { border-color: var(--ouro); color: var(--ouro); }
-    .seta:disabled { opacity: 0; pointer-events: none; }
-    .seta svg { width: 20px; height: 20px; }
-    .seta.ant { left: -14px; }
-    .seta.prox { right: -14px; }
+
+    .seta:hover {
+      border-color: var(--ouro);
+      color: var(--ouro);
+    }
+
+    .seta:disabled {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .seta svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .seta.ant {
+      left: -14px;
+    }
+
+    .seta.prox {
+      right: -14px;
+    }
 
     dialog.player {
-      width: min(960px, 94vw); padding: 0; border: 1px solid var(--borda); border-radius: 14px;
-      background: #000; color: var(--texto); overflow: hidden;
+      width: min(960px, 94vw);
+      padding: 0;
+      border: 1px solid var(--borda);
+      border-radius: 14px;
+      background: #000;
+      color: var(--texto);
+      overflow: hidden;
     }
-    dialog.player::backdrop { background: rgba(0,0,0,.8); backdrop-filter: blur(3px); }
-    .player-moldura { aspect-ratio: 16 / 9; }
-    .player-moldura iframe { width: 100%; height: 100%; border: 0; display: block; }
-    .player-barra { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 14px; background: var(--painel); }
-    .player-barra b { font-size: .92rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    .fechar { background: none; border: 1px solid var(--borda); color: var(--texto); border-radius: 8px; padding: 6px 12px; cursor: pointer; font: inherit; flex: none; }
-    .fechar:hover { border-color: var(--ouro); color: var(--ouro); }
+
+    dialog.player::backdrop {
+      background: rgba(0, 0, 0, .8);
+      backdrop-filter: blur(3px);
+    }
+
+    .player-moldura {
+      aspect-ratio: 16 / 9;
+    }
+
+    .player-moldura iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    .player-barra {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      background: var(--painel);
+    }
+
+    .player-barra b {
+      font-size: .92rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .fechar {
+      background: none;
+      border: 1px solid var(--borda);
+      color: var(--texto);
+      border-radius: 8px;
+      padding: 6px 12px;
+      cursor: pointer;
+      font: inherit;
+      flex: none;
+    }
+
+    .fechar:hover {
+      border-color: var(--ouro);
+      color: var(--ouro);
+    }
 
     /* ---------- Rodapé ---------- */
-    footer { margin-top: 56px; border-top: 1px solid var(--borda); background: #05070a; }
-    .rodape { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding: 24px 16px; }
-    .rodape-marca { display: flex; align-items: center; gap: 12px; }
-    .rodape-marca img { width: 48px; height: 48px; }
-    .rodape-marca b { font-family: var(--fonte-titulo); font-weight: 400; }
-    .rodape small { color: var(--suave); display: block; }
-    .rodape-legal {
-      display: flex; justify-content: space-between; align-items: center; gap: 8px 16px; flex-wrap: wrap;
-      padding: 12px 16px 20px; border-top: 1px solid #141a26; font-size: .78rem; color: #6f7a8c;
+    footer {
+      margin-top: 56px;
+      border-top: 1px solid var(--borda);
+      background: #05070a;
     }
-    .rodape-legal nav { display: flex; gap: 8px; }
-    .rodape-legal a { color: #8792a5; text-decoration: none; }
-    .rodape-legal a:hover { color: var(--ouro); text-decoration: underline; }
+
+    .rodape {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      padding: 24px 16px;
+    }
+
+    .rodape-marca {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .rodape-marca img {
+      width: 48px;
+      height: 48px;
+    }
+
+    .rodape-marca b {
+      font-family: var(--fonte-titulo);
+      font-weight: 400;
+    }
+
+    .rodape small {
+      color: var(--suave);
+      display: block;
+    }
+
+    .rodape-legal {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px 16px;
+      flex-wrap: wrap;
+      padding: 12px 16px 20px;
+      border-top: 1px solid #141a26;
+      font-size: .78rem;
+      color: #6f7a8c;
+    }
+
+    .rodape-legal nav {
+      display: flex;
+      gap: 8px;
+    }
+
+    .rodape-legal a {
+      color: #8792a5;
+      text-decoration: none;
+    }
+
+    .rodape-legal a:hover {
+      color: var(--ouro);
+      text-decoration: underline;
+    }
 
     /* ---------- Responsivo ---------- */
     @media (max-width: 980px) {
-      .trilho { grid-auto-columns: calc((100% - 2 * 16px) / 3); }
+      .trilho {
+        grid-auto-columns: calc((100% - 2 * 16px) / 3);
+      }
     }
+
     @media (max-width: 820px) {
-      .topo { grid-template-columns: 1fr; text-align: center; justify-items: center; padding: 24px 18px 16px; gap: 12px; }
-      .logo { width: 150px; height: 150px; }
-      .subtitulo { margin-left: auto; margin-right: auto; }
-      .ctas { justify-content: center; }
-      .icones { display: none; }
-      .faixa { margin: 0 18px 20px; }
-      .lcd { grid-template-columns: repeat(2, 1fr); }
-      .passos { grid-template-columns: 1fr; }
-      .trilho { grid-auto-columns: calc((100% - 16px) / 2); }
-      .seta { display: none; }
+      .topo {
+        grid-template-columns: 1fr;
+        text-align: center;
+        justify-items: center;
+        padding: 24px 18px 16px;
+        gap: 12px;
+      }
+
+      .logo {
+        width: 150px;
+        height: 150px;
+      }
+
+      .subtitulo {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .ctas {
+        justify-content: center;
+      }
+
+      .icones {
+        display: none;
+      }
+
+      .faixa {
+        margin: 0 18px 20px;
+      }
+
+      .lcd {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .passos {
+        grid-template-columns: 1fr;
+      }
+
+      .trilho {
+        grid-auto-columns: calc((100% - 16px) / 2);
+      }
+
+      .seta {
+        display: none;
+      }
     }
+
     @media (max-width: 520px) {
-      .testeira { padding-top: 16px; }
-      .lista { grid-template-columns: 1fr; }
-      .trilho { grid-auto-columns: 82%; }
-      .card { padding: 18px; }
-      .card-foto { margin: -18px -18px 0; }
-      .card-rodape { flex-direction: column; align-items: stretch; }
-      esp-web-install-button .btn { width: 100%; }
+      .testeira {
+        padding-top: 16px;
+      }
+
+      .lista {
+        grid-template-columns: 1fr;
+      }
+
+      .trilho {
+        grid-auto-columns: 82%;
+      }
+
+      .card {
+        padding: 18px;
+      }
+
+      .card-foto {
+        margin: -18px -18px 0;
+      }
+
+      .card-rodape {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      esp-web-install-button .btn {
+        width: 100%;
+      }
     }
   </style>
 </head>
+
 <body>
   <!-- Ícones reutilizados -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-    <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
-    <symbol id="i-usb" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 2v14M12 2l-3 3M12 2l3 3M7 9v3l5 3M17 7v3l-5 3"/><circle cx="12" cy="19" r="2.5" fill="currentColor"/><rect x="5.5" y="6.5" width="3" height="3" fill="currentColor"/><circle cx="17" cy="6" r="1.6" fill="currentColor"/></symbol>
-    <symbol id="i-yt" viewBox="0 0 24 24"><path fill="currentColor" d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.7 15.1V8.9l5.8 3.1-5.8 3.1z"/></symbol>
-    <symbol id="i-play" viewBox="0 0 24 24"><path fill="currentColor" d="M8 5.5v13l11-6.5z"/></symbol>
-    <symbol id="i-down" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M12 4v12M6.5 11 12 16.5 17.5 11M5 20h14"/></symbol>
-    <symbol id="i-alerta" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M12 3 2 20.5h20z"/><path stroke="currentColor" stroke-width="2.4" stroke-linecap="round" d="M12 9.5v5M12 17.6v.2"/></symbol>
-    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path stroke="currentColor" stroke-width="2.4" stroke-linecap="round" d="M12 11v6M12 7.3v.2"/></symbol>
-    <symbol id="i-chip" viewBox="0 0 32 32"><rect x="8" y="8" width="16" height="16" rx="2" fill="#1b2a47" stroke="#3cc8ff" stroke-width="1.6"/><rect x="12" y="12" width="8" height="8" rx="1" fill="#ffb400"/><path stroke="#3cc8ff" stroke-width="1.6" stroke-linecap="round" d="M12 4v4M16 4v4M20 4v4M12 24v4M16 24v4M20 24v4M4 12h4M4 16h4M4 20h4M24 12h4M24 16h4M24 20h4"/></symbol>
-    <symbol id="i-tela" viewBox="0 0 32 32"><rect x="3" y="6" width="26" height="18" rx="2.5" fill="#0a1a3a" stroke="#3cc8ff" stroke-width="1.6"/><path stroke="#ffb400" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" d="M7 19l4-4 3 3 5-6 4 3"/><path stroke="#3cc8ff" stroke-width="1.6" stroke-linecap="round" d="M12 28h8"/></symbol>
-    <symbol id="i-seta-e" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M15 5l-7 7 7 7"/></symbol>
-    <symbol id="i-seta-d" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+        d="M5 12.5l4.5 4.5L19 7.5" />
+    </symbol>
+    <symbol id="i-usb" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        d="M12 2v14M12 2l-3 3M12 2l3 3M7 9v3l5 3M17 7v3l-5 3" />
+      <circle cx="12" cy="19" r="2.5" fill="currentColor" />
+      <rect x="5.5" y="6.5" width="3" height="3" fill="currentColor" />
+      <circle cx="17" cy="6" r="1.6" fill="currentColor" />
+    </symbol>
+    <symbol id="i-yt" viewBox="0 0 24 24">
+      <path fill="currentColor"
+        d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.7 15.1V8.9l5.8 3.1-5.8 3.1z" />
+    </symbol>
+    <symbol id="i-play" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M8 5.5v13l11-6.5z" />
+    </symbol>
+    <symbol id="i-down" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"
+        d="M12 4v12M6.5 11 12 16.5 17.5 11M5 20h14" />
+    </symbol>
+    <symbol id="i-alerta" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M12 3 2 20.5h20z" />
+      <path stroke="currentColor" stroke-width="2.4" stroke-linecap="round" d="M12 9.5v5M12 17.6v.2" />
+    </symbol>
+    <symbol id="i-info" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2" />
+      <path stroke="currentColor" stroke-width="2.4" stroke-linecap="round" d="M12 11v6M12 7.3v.2" />
+    </symbol>
+    <symbol id="i-chip" viewBox="0 0 32 32">
+      <rect x="8" y="8" width="16" height="16" rx="2" fill="#1b2a47" stroke="#3cc8ff" stroke-width="1.6" />
+      <rect x="12" y="12" width="8" height="8" rx="1" fill="#ffb400" />
+      <path stroke="#3cc8ff" stroke-width="1.6" stroke-linecap="round"
+        d="M12 4v4M16 4v4M20 4v4M12 24v4M16 24v4M20 24v4M4 12h4M4 16h4M4 20h4M24 12h4M24 16h4M24 20h4" />
+    </symbol>
+    <symbol id="i-tela" viewBox="0 0 32 32">
+      <rect x="3" y="6" width="26" height="18" rx="2.5" fill="#0a1a3a" stroke="#3cc8ff" stroke-width="1.6" />
+      <path stroke="#ffb400" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"
+        d="M7 19l4-4 3 3 5-6 4 3" />
+      <path stroke="#3cc8ff" stroke-width="1.6" stroke-linecap="round" d="M12 28h8" />
+    </symbol>
+    <symbol id="i-seta-e" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"
+        d="M15 5l-7 7 7 7" />
+    </symbol>
+    <symbol id="i-seta-d" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"
+        d="M9 5l7 7-7 7" />
+    </symbol>
   </svg>
 
   <header class="testeira">
@@ -392,24 +1196,38 @@
         <div class="topo">
           <img class="logo" src="assets/logo.png" width="190" height="190" alt="Logo do Canal dos Nerds">
           <div class="marca">
-            <span class="selo"><svg><use href="#i-check"/></svg> Firmwares oficiais</span>
+            <span class="selo"><svg>
+                <use href="#i-check" />
+              </svg> Firmwares oficiais</span>
             <h1><span class="linha-1">Canal dos</span><span class="linha-2">Nerds</span></h1>
-            <p class="subtitulo">Instale o <strong>NERD OS</strong> no seu ESP32 direto pelo navegador e coloque sua placa para minerar em minutos. Sem programas, sem complicação.</p>
+            <p class="subtitulo">Instale o <strong>NERD OS</strong> no seu ESP32 direto pelo navegador e coloque sua
+              placa para minerar em minutos. Sem programas, sem complicação.</p>
             <div class="ctas">
-              <a class="btn btn-ouro" href="#firmwares"><svg><use href="#i-down"/></svg> Instalar firmware</a>
-              <a class="btn btn-yt" href="https://www.youtube.com/@eduardotirapani" target="_blank" rel="noopener"><svg><use href="#i-yt"/></svg> Canal no YouTube</a>
+              <a class="btn btn-ouro" href="#firmwares"><svg>
+                  <use href="#i-down" />
+                </svg> Instalar firmware</a>
+              <a class="btn btn-yt" href="https://www.youtube.com/@eduardotirapani" target="_blank" rel="noopener"><svg>
+                  <use href="#i-yt" />
+                </svg> Canal no YouTube</a>
             </div>
           </div>
           <div class="icones" aria-hidden="true">
             <img class="moeda" src="assets/moeda-bitcoin.png" width="150" height="150" alt="">
             <svg class="grafico" viewBox="0 0 80 80">
-              <defs><linearGradient id="g-barra" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd45c"/><stop offset="1" stop-color="#ff8a00"/></linearGradient></defs>
-              <rect x="6" y="52" width="12" height="22" rx="2" fill="url(#g-barra)"/>
-              <rect x="24" y="40" width="12" height="34" rx="2" fill="url(#g-barra)"/>
-              <rect x="42" y="28" width="12" height="46" rx="2" fill="url(#g-barra)"/>
-              <rect x="60" y="14" width="12" height="60" rx="2" fill="url(#g-barra)"/>
-              <path d="M6 40 28 24l12 8L70 6" fill="none" stroke="#ffd45c" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M58 5h13v13" fill="none" stroke="#ffd45c" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+              <defs>
+                <linearGradient id="g-barra" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#ffd45c" />
+                  <stop offset="1" stop-color="#ff8a00" />
+                </linearGradient>
+              </defs>
+              <rect x="6" y="52" width="12" height="22" rx="2" fill="url(#g-barra)" />
+              <rect x="24" y="40" width="12" height="34" rx="2" fill="url(#g-barra)" />
+              <rect x="42" y="28" width="12" height="46" rx="2" fill="url(#g-barra)" />
+              <rect x="60" y="14" width="12" height="60" rx="2" fill="url(#g-barra)" />
+              <path d="M6 40 28 24l12 8L70 6" fill="none" stroke="#ffd45c" stroke-width="4" stroke-linecap="round"
+                stroke-linejoin="round" />
+              <path d="M58 5h13v13" fill="none" stroke="#ffd45c" stroke-width="4" stroke-linecap="round"
+                stroke-linejoin="round" />
             </svg>
           </div>
         </div>
@@ -435,24 +1253,38 @@
       </div>
 
       <div class="passos">
-        <div class="passo"><span class="num">1</span><div><b>Conecte o ESP32</b><span>Use um cabo USB de dados</span></div></div>
-        <div class="passo"><span class="num">2</span><div><b>Escolha o firmware</b><span>Compare sua placa com a foto</span></div></div>
-        <div class="passo"><span class="num">3</span><div><b>Clique em Instalar</b><span>Selecione a porta e aguarde</span></div></div>
+        <div class="passo"><span class="num">1</span>
+          <div><b>Conecte o ESP32</b><span>Use um cabo USB de dados</span></div>
+        </div>
+        <div class="passo"><span class="num">2</span>
+          <div><b>Escolha o firmware</b><span>Compare sua placa com a foto</span></div>
+        </div>
+        <div class="passo"><span class="num">3</span>
+          <div><b>Clique em Instalar</b><span>Selecione a porta e aguarde</span></div>
+        </div>
       </div>
 
       <div class="disclaimer" role="note">
-        <svg><use href="#i-alerta"/></svg>
+        <svg>
+          <use href="#i-alerta" />
+        </svg>
         <div>
           <b>Projeto de estudo, gratuito e sem garantias</b>
-          <p>Os firmwares do NERD OS são desenvolvidos como <strong>projeto de estudo</strong> e disponibilizados <strong>gratuitamente</strong>. Ao instalar, você assume os riscos do procedimento: o site e o Canal dos Nerds <strong>não se responsabilizam por possíveis danos</strong> às placas ou a outros equipamentos causados pelo uso deste software. <a href="termos.html">Leia os termos</a>.</p>
+          <p>Os firmwares do NERD OS são desenvolvidos como <strong>projeto de estudo</strong> e disponibilizados
+            <strong>gratuitamente</strong>. Ao instalar, você assume os riscos do procedimento: o site e o Canal dos
+            Nerds <strong>não se responsabilizam por possíveis danos</strong> às placas ou a outros equipamentos
+            causados pelo uso deste software. <a href="termos.html">Leia os termos</a>.</p>
         </div>
       </div>
 
       <div class="lista" id="lista"></div>
 
       <div class="aviso">
-        <svg><use href="#i-info"/></svg>
-        <span>Funciona no <strong>Chrome</strong>, <strong>Edge</strong> ou <strong>Opera</strong> no computador. Mantenha esta aba visível durante a instalação. Se algo der errado, veja as dicas abaixo.</span>
+        <svg>
+          <use href="#i-info" />
+        </svg>
+        <span>Funciona no <strong>Chrome</strong>, <strong>Edge</strong> ou <strong>Opera</strong> no computador.
+          Mantenha esta aba visível durante a instalação. Se algo der errado, veja as dicas abaixo.</span>
       </div>
 
       <details class="ajuda">
@@ -461,31 +1293,44 @@
         <h4>A placa não aparece na lista de portas</h4>
         <ul>
           <li>Use um cabo USB <strong>de dados</strong>. Muitos cabos só carregam e não transmitem nada.</li>
-          <li>Instale o driver do chip USB da sua placa. O nome dele costuma estar escrito no chip perto do conector USB:
+          <li>Instale o driver do chip USB da sua placa. O nome dele costuma estar escrito no chip perto do conector
+            USB:
             <ul>
-              <li><strong>CP2102 / CP210x</strong>: <a href="https://www.silabs.com/software-and-tools/usb-to-uart-bridge-vcp-drivers" target="_blank" rel="noopener">driver da Silicon Labs</a></li>
-              <li><strong>CH340 / CH341 / CH9102 / CH343</strong>: driver da WCH para <a href="https://www.wch-ic.com/downloads/CH34XSER_EXE.html" target="_blank" rel="noopener">Windows</a> ou <a href="https://www.wch-ic.com/downloads/CH34XSER_MAC_ZIP.html" target="_blank" rel="noopener">macOS</a></li>
+              <li><strong>CP2102 / CP210x</strong>: <a
+                  href="https://www.silabs.com/software-and-tools/usb-to-uart-bridge-vcp-drivers" target="_blank"
+                  rel="noopener">driver da Silicon Labs</a></li>
+              <li><strong>CH340 / CH341 / CH9102 / CH343</strong>: driver da WCH para <a
+                  href="https://www.wch-ic.com/downloads/CH343SER_EXE.html" target="_blank" rel="noopener">Windows</a>
+                ou <a href="https://www.wch-ic.com/downloads/CH34XSER_MAC_ZIP.html" target="_blank"
+                  rel="noopener">macOS</a></li>
             </ul>
           </li>
         </ul>
 
         <h4>A instalação trava no meio (ex.: parada em 77%)</h4>
         <ul>
-          <li>Não troque de aba nem minimize o navegador enquanto grava. Em segundo plano, o Chrome deixa a página mais lenta.</li>
-          <li>Ligue a placa <strong>direto no computador</strong>. Hubs USB e adaptadores USB-C com várias portas (HDMI, cartão etc.) costumam causar esse travamento. Um adaptador simples, sem hub, funciona melhor.</li>
+          <li>Não troque de aba nem minimize o navegador enquanto grava. Em segundo plano, o Chrome deixa a página mais
+            lenta.</li>
+          <li>Ligue a placa <strong>direto no computador</strong>. Hubs USB e adaptadores USB-C com várias portas (HDMI,
+            cartão etc.) costumam causar esse travamento. Um adaptador simples, sem hub, funciona melhor.</li>
           <li>Troque o cabo por um mais curto e de boa qualidade.</li>
-          <li>No Mac, placas com chip <strong>CH9102</strong> (aparecem como <code>usbserial-</code> seguido de um número longo) usam o driver genérico da Apple, que costuma travar. Instale o driver da WCH (link acima) e tente de novo.</li>
+          <li>No Mac, placas com chip <strong>CH9102</strong> (aparecem como <code>usbserial-</code> seguido de um
+            número longo) usam o driver genérico da Apple, que costuma travar. Instale o driver da WCH (link acima) e
+            tente de novo.</li>
           <li>Antes de tentar de novo: desconecte a placa, recarregue a página e reconecte.</li>
         </ul>
 
         <h4>Fica parado em “Connecting…”</h4>
         <ul>
-          <li>Segure o botão <strong>BOOT</strong> da placa, clique em Instalar e solte o botão quando a gravação começar.</li>
+          <li>Segure o botão <strong>BOOT</strong> da placa, clique em Instalar e solte o botão quando a gravação
+            começar.</li>
         </ul>
 
         <h4>Nada resolveu?</h4>
-        <p>Grave pelo terminal com o <code>esptool</code>, usando o arquivo <code>_FULL.bin</code> no endereço <code>0x0</code>:<br>
-          <code>esptool.py --chip esp32 --port SUA_PORTA write_flash 0x0 ARQUIVO_FULL.bin</code></p>
+        <p>Grave pelo terminal com o <code>esptool</code>, usando o arquivo <code>_FULL.bin</code> no endereço
+          <code>0x0</code>:<br>
+          <code>esptool.py --chip esp32 --port SUA_PORTA write_flash 0x0 ARQUIVO_FULL.bin</code>
+        </p>
       </details>
     </section>
 
@@ -495,12 +1340,19 @@
           <h2>Vídeos do canal</h2>
           <p>Tutoriais, testes e novidades de mineração no Canal dos Nerds.</p>
         </div>
-        <a class="btn btn-yt" href="https://www.youtube.com/@eduardotirapani?sub_confirmation=1" target="_blank" rel="noopener"><svg><use href="#i-yt"/></svg> Inscreva-se</a>
+        <a class="btn btn-yt" href="https://www.youtube.com/@eduardotirapani?sub_confirmation=1" target="_blank"
+          rel="noopener"><svg>
+            <use href="#i-yt" />
+          </svg> Inscreva-se</a>
       </div>
       <div class="carrossel">
-        <button class="seta ant" type="button" aria-label="Vídeos anteriores" disabled><svg><use href="#i-seta-e"/></svg></button>
+        <button class="seta ant" type="button" aria-label="Vídeos anteriores" disabled><svg>
+            <use href="#i-seta-e" />
+          </svg></button>
         <div class="trilho" id="trilho" tabindex="0" aria-label="Vídeos recentes do canal"></div>
-        <button class="seta prox" type="button" aria-label="Próximos vídeos"><svg><use href="#i-seta-d"/></svg></button>
+        <button class="seta prox" type="button" aria-label="Próximos vídeos"><svg>
+            <use href="#i-seta-d" />
+          </svg></button>
       </div>
     </section>
   </main>
@@ -514,7 +1366,9 @@
           <small>Firmwares oficiais do NERD OS para ESP32</small>
         </div>
       </div>
-      <a class="btn btn-yt" href="https://www.youtube.com/@eduardotirapani" target="_blank" rel="noopener"><svg><use href="#i-yt"/></svg> youtube.com/@eduardotirapani</a>
+      <a class="btn btn-yt" href="https://www.youtube.com/@eduardotirapani" target="_blank" rel="noopener"><svg>
+          <use href="#i-yt" />
+        </svg> youtube.com/@eduardotirapani</a>
     </div>
     <div class="container rodape-legal">
       <span>Firmwares fornecidos sem garantias. Use por sua conta e risco.</span>
@@ -527,8 +1381,11 @@
   </footer>
 
   <dialog class="player" id="player" aria-label="Vídeo do canal">
-    <div class="player-moldura"><iframe id="player-iframe" title="Vídeo do YouTube" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-    <div class="player-barra"><b id="player-titulo"></b><button class="fechar" type="button" id="player-fechar">Fechar ✕</button></div>
+    <div class="player-moldura"><iframe id="player-iframe" title="Vídeo do YouTube"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe></div>
+    <div class="player-barra"><b id="player-titulo"></b><button class="fechar" type="button" id="player-fechar">Fechar
+        ✕</button></div>
   </dialog>
 
   <script>
@@ -764,4 +1621,5 @@
     })();
   </script>
 </body>
+
 </html>
