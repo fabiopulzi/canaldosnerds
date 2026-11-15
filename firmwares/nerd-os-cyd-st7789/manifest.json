@@ -1,5 +1,5 @@
 {
-  "name": "NERD OS — ESP32 CYD (display ST7789)",
+  "name": "NERD OS — ESP32 CYD 2 USB (display ST7789)",
   "version": "2.2.4",
   "new_install_prompt_erase": true,
   "builds": [

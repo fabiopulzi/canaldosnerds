@@ -182,13 +182,37 @@
         url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' fill='none' stroke='%233cc8ff' stroke-opacity='.10' stroke-width='1.5'%3E%3Cpath d='M0 30h40l15 15h50l10-10h45M0 110h25l20-20h40l20 20h55M60 0v20l15 15v30M120 160v-30l-20-20v-25M30 160v-25l15-15'/%3E%3C/svg%3E"),
         linear-gradient(180deg, #0b1220, #0a0e16);
     }
-    .card-foto img {
+    .card-foto { position: relative; }
+    .foto-moldura { position: relative; line-height: 0; transition: transform .35s ease; }
+    .foto-moldura img {
       height: 196px; width: auto;
       filter: drop-shadow(0 10px 16px rgba(0,0,0,.65)) drop-shadow(0 0 14px rgba(60,200,255,.18));
-      transition: transform .35s ease;
     }
-    .card:hover .card-foto img { transform: translateY(-4px) rotate(-3deg) scale(1.03); }
-    @media (prefers-reduced-motion: reduce) { .card:hover .card-foto img { transform: none; } }
+    .card-foto.paisagem .foto-moldura { width: min(330px, 84%); }
+    .card-foto.paisagem .foto-moldura img { width: 100%; height: auto; }
+    .card:hover .foto-moldura { transform: translateY(-4px) rotate(-2deg) scale(1.03); }
+    /* Moldura pulsante que aponta um detalhe da placa (ex.: as portas USB) */
+    .realce {
+      position: absolute; border: 2px solid var(--ouro); border-radius: 8px;
+      box-shadow: 0 0 0 3px rgba(255,180,0,.25), 0 0 16px rgba(255,180,0,.6);
+      animation: pulsar 1.8s ease-in-out infinite;
+    }
+    @keyframes pulsar { 50% { box-shadow: 0 0 0 6px rgba(255,180,0,.12), 0 0 24px rgba(255,180,0,.85); } }
+    .foto-selo {
+      position: absolute; left: 12px; bottom: 12px; display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(10,12,18,.88); border: 1px solid var(--ouro); color: var(--ouro-claro);
+      border-radius: 999px; padding: 4px 12px; font-size: .78rem; font-weight: 700;
+      box-shadow: 0 4px 14px rgba(0,0,0,.5); line-height: 1.4;
+    }
+    .foto-selo svg { width: 14px; height: 14px; }
+    @media (prefers-reduced-motion: reduce) { .card:hover .foto-moldura { transform: none; } .realce { animation: none; } }
+    .identificar {
+      display: flex; gap: 10px; align-items: flex-start; margin: 0;
+      background: rgba(255,180,0,.07); border: 1px solid rgba(255,180,0,.35); border-radius: 10px;
+      padding: 10px 12px; font-size: .9rem; color: #e9dcc0;
+    }
+    .identificar svg { flex: none; width: 18px; height: 18px; color: var(--ouro); margin-top: 2px; }
+    .identificar strong { color: var(--ouro-claro); white-space: nowrap; }
     .card-icone {
       flex: none; width: 52px; height: 52px; border-radius: 12px; display: grid; place-items: center;
       background: radial-gradient(circle at 30% 30%, #1d2a44, #0c1220); border: 1px solid #2a3b5e;
@@ -486,11 +510,16 @@
         manifest: "firmwares/nerd-os-devkit/manifest.json"
       },
       {
-        nome: "NERD OS — ESP32 CYD (com display)",
-        descricao: "Versão para a placa ESP32-2432S028 (CYD) com tela de 2,8\" e controlador ST7789.",
+        nome: "NERD OS — ESP32 CYD 2 USB (com display)",
+        descricao: "Versão para a placa ESP32-2432S028 (CYD) com tela de 2,8\" e 2 portas USB.",
         versao: "2.2.4",
-        chips: ["ESP32", "CYD 2432S028", "Display ST7789"],
+        chips: ["ESP32", "CYD 2432S028", "USB-C + Micro USB", "Display ST7789"],
         icone: "tela",
+        imagem: "assets/placas/esp32-cyd-2432s028-2usb.webp",
+        imagemAlt: "Traseira da placa ESP32-2432S028 (CYD) com uma porta USB-C e uma Micro USB",
+        selo: "2 portas USB",
+        realce: { x: -1, y: 39, w: 13, h: 46 },  // posição das portas USB na foto, em %
+        identificar: "Confira a lateral da sua placa: ela precisa ter <strong>2 portas USB</strong>, uma <strong>USB-C</strong> e uma <strong>Micro USB</strong>. Placas com apenas 1 porta usam outro display e precisam de outra versão do firmware.",
         manifest: "firmwares/nerd-os-cyd-st7789/manifest.json"
       }
     ];
@@ -560,7 +589,7 @@
       const card = document.createElement("article");
       card.className = "card";
       card.innerHTML = `
-        ${fw.imagem ? `<div class="card-foto"><img loading="lazy" width="223" height="420"></div>` : ""}
+        ${fw.imagem ? `<div class="card-foto"><div class="foto-moldura"><img loading="lazy"></div></div>` : ""}
         <div class="card-topo">
           <div class="card-icone"><svg><use href="#i-${fw.icone === "tela" ? "tela" : "chip"}"/></svg></div>
           <div>
@@ -569,6 +598,7 @@
           </div>
         </div>
         <p></p>
+        ${fw.identificar ? `<div class="identificar"><svg><use href="#i-info"/></svg><span>${fw.identificar}</span></div>` : ""}
         <div class="tags"></div>
         <div class="card-rodape">
           <span class="contador" hidden><svg><use href="#i-down"/></svg><strong></strong> <span></span></span>
@@ -579,9 +609,25 @@
           </esp-web-install-button>
         </div>`;
       if (fw.imagem) {
-        const img = card.querySelector(".card-foto img");
+        const foto = card.querySelector(".card-foto");
+        const img = foto.querySelector("img");
+        // Fotos deitadas (mais largas que altas) ocupam a largura em vez da altura
+        img.addEventListener("load", () => foto.classList.toggle("paisagem", img.naturalWidth > img.naturalHeight));
         img.src = fw.imagem;
         img.alt = fw.imagemAlt || fw.nome;
+        if (fw.realce) {
+          const r = document.createElement("span");
+          r.className = "realce";
+          Object.assign(r.style, { left: fw.realce.x + "%", top: fw.realce.y + "%", width: fw.realce.w + "%", height: fw.realce.h + "%" });
+          foto.querySelector(".foto-moldura").appendChild(r);
+        }
+        if (fw.selo) {
+          const s = document.createElement("span");
+          s.className = "foto-selo";
+          s.innerHTML = `<svg><use href="#i-usb"/></svg>`;
+          s.append(fw.selo);
+          foto.appendChild(s);
+        }
       }
       card.querySelector("h3").textContent = fw.nome;
       card.querySelector("p").textContent = fw.descricao;
