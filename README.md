@@ -66,3 +66,10 @@ no seu computador:
 ```
 python3 scripts/atualizar_videos.py
 ```
+
+## Posts do Instagram (carrossel)
+
+Os posts exibidos ficam em `instagram.json`, uma lista com os links dos posts ou reels
+(ex.: `https://www.instagram.com/p/CODIGO/` ou `https://www.instagram.com/reel/CODIGO/`).
+Para trocar, basta editar a lista e fazer commit. A ordem da lista é a ordem do carrossel.
+Se a lista ficar vazia, a seção some da página.

@@ -211,6 +211,23 @@
       background: #ff1f4b;
     }
 
+    .btn-ig {
+      background: linear-gradient(45deg, #f9a825 0%, #f2541b 30%, #d6246e 60%, #8a3ab9 100%);
+      color: #fff;
+      box-shadow: 0 4px 18px rgba(214, 36, 110, .3);
+    }
+
+    .btn-ig:hover {
+      box-shadow: 0 6px 24px rgba(214, 36, 110, .45);
+      filter: brightness(1.08);
+    }
+
+    .rodape-redes {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
     .btn svg {
       width: 20px;
       height: 20px;
@@ -925,6 +942,62 @@
       right: -14px;
     }
 
+    /* Carrossel do Instagram (embeds oficiais) */
+    .trilho-ig {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: 340px;
+      gap: 16px;
+      align-items: start;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      padding: 4px 2px 14px;
+      scrollbar-width: thin;
+      scrollbar-color: #2a3346 transparent;
+    }
+
+    .post-ig {
+      scroll-snap-align: start;
+      height: 470px;
+      border-radius: var(--raio);
+      overflow: hidden;
+      background: var(--painel);
+      border: 1px solid var(--borda);
+    }
+
+    .post-ig iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      background: #fff;
+    }
+
+    .ver-mais-ig {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--texto);
+      font-weight: 700;
+      background: linear-gradient(160deg, rgba(214, 36, 110, .18), var(--painel) 60%);
+    }
+
+    .ver-mais-ig svg {
+      width: 46px;
+      height: 46px;
+      color: #e1306c;
+    }
+
+    @media (max-width: 520px) {
+      .trilho-ig {
+        grid-auto-columns: 86%;
+      }
+    }
+
     dialog.player {
       width: min(960px, 94vw);
       padding: 0;
@@ -1153,6 +1226,11 @@
       <path fill="currentColor"
         d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.7 15.1V8.9l5.8 3.1-5.8 3.1z" />
     </symbol>
+    <symbol id="i-ig" viewBox="0 0 24 24">
+      <rect x="2.5" y="2.5" width="19" height="19" rx="5.5" fill="none" stroke="currentColor" stroke-width="2" />
+      <circle cx="12" cy="12" r="4.3" fill="none" stroke="currentColor" stroke-width="2" />
+      <circle cx="17.4" cy="6.6" r="1.3" fill="currentColor" />
+    </symbol>
     <symbol id="i-play" viewBox="0 0 24 24">
       <path fill="currentColor" d="M8 5.5v13l11-6.5z" />
     </symbol>
@@ -1209,6 +1287,9 @@
               <a class="btn btn-yt" href="https://www.youtube.com/@eduardotirapani" target="_blank" rel="noopener"><svg>
                   <use href="#i-yt" />
                 </svg> Canal no YouTube</a>
+              <a class="btn btn-ig" href="https://www.instagram.com/eduardotirapani/" target="_blank" rel="noopener"><svg>
+                  <use href="#i-ig" />
+                </svg> Instagram</a>
             </div>
           </div>
           <div class="icones" aria-hidden="true">
@@ -1355,6 +1436,27 @@
           </svg></button>
       </div>
     </section>
+
+    <section id="instagram" hidden>
+      <div class="cabeca-secao">
+        <div>
+          <h2>No Instagram</h2>
+          <p>Bastidores, montagens e novidades do Canal dos Nerds.</p>
+        </div>
+        <a class="btn btn-ig" href="https://www.instagram.com/eduardotirapani/" target="_blank" rel="noopener"><svg>
+            <use href="#i-ig" />
+          </svg> Seguir @eduardotirapani</a>
+      </div>
+      <div class="carrossel">
+        <button class="seta ant ig-ant" type="button" aria-label="Posts anteriores" disabled><svg>
+            <use href="#i-seta-e" />
+          </svg></button>
+        <div class="trilho-ig" id="trilho-ig" tabindex="0" aria-label="Posts recentes do Instagram"></div>
+        <button class="seta prox ig-prox" type="button" aria-label="Próximos posts"><svg>
+            <use href="#i-seta-d" />
+          </svg></button>
+      </div>
+    </section>
   </main>
 
   <footer>
@@ -1366,9 +1468,14 @@
           <small>Firmwares oficiais do NERD OS para ESP32</small>
         </div>
       </div>
-      <a class="btn btn-yt" href="https://www.youtube.com/@eduardotirapani" target="_blank" rel="noopener"><svg>
-          <use href="#i-yt" />
-        </svg> youtube.com/@eduardotirapani</a>
+      <div class="rodape-redes">
+        <a class="btn btn-yt" href="https://www.youtube.com/@eduardotirapani" target="_blank" rel="noopener"><svg>
+            <use href="#i-yt" />
+          </svg> YouTube</a>
+        <a class="btn btn-ig" href="https://www.instagram.com/eduardotirapani/" target="_blank" rel="noopener"><svg>
+            <use href="#i-ig" />
+          </svg> @eduardotirapani</a>
+      </div>
     </div>
     <div class="container rodape-legal">
       <span>Firmwares fornecidos sem garantias. Use por sua conta e risco.</span>
@@ -1618,6 +1725,57 @@
       }
       trilho.appendChild(cartaoVerMais());
       atualizarSetas();
+    })();
+
+    // ================= Instagram =================
+    // Os posts exibidos ficam em instagram.json (lista de links de posts/reels).
+    // Para trocar, edite essa lista. Cada post é o embed oficial do Instagram,
+    // carregado só quando chega perto da tela (loading="lazy").
+    (async () => {
+      const secao = document.getElementById("instagram");
+      const trilhoIg = document.getElementById("trilho-ig");
+      const antIg = secao.querySelector(".ig-ant");
+      const proxIg = secao.querySelector(".ig-prox");
+      let posts = [];
+      try {
+        const r = await fetch("instagram.json", { cache: "no-cache" });
+        if (r.ok) posts = await r.json();
+      } catch { /* sem lista: a seção continua escondida */ }
+      posts = posts.filter((u) => /^https:\/\/www\.instagram\.com\/(p|reel)\/[\w-]+\/?$/.test(u));
+      if (!posts.length) return;
+      secao.hidden = false;
+
+      for (const url of posts) {
+        const item = document.createElement("div");
+        item.className = "post-ig";
+        const f = document.createElement("iframe");
+        f.src = url.replace(/\/?$/, "/") + "embed/";
+        f.loading = "lazy";
+        f.title = "Post do Instagram do Canal dos Nerds";
+        f.setAttribute("scrolling", "no");
+        f.setAttribute("allowtransparency", "true");
+        item.appendChild(f);
+        trilhoIg.appendChild(item);
+      }
+      const verMais = document.createElement("a");
+      verMais.className = "post-ig ver-mais-ig";
+      verMais.href = "https://www.instagram.com/eduardotirapani/";
+      verMais.target = "_blank";
+      verMais.rel = "noopener";
+      verMais.innerHTML = `<svg><use href="#i-ig"/></svg><span>Ver mais no Instagram</span>`;
+      trilhoIg.appendChild(verMais);
+
+      const atualizarSetasIg = () => {
+        antIg.disabled = trilhoIg.scrollLeft < 8;
+        proxIg.disabled = trilhoIg.scrollLeft + trilhoIg.clientWidth >= trilhoIg.scrollWidth - 8;
+      };
+      const passoIg = () => trilhoIg.clientWidth * 0.9;
+      antIg.addEventListener("click", () => trilhoIg.scrollBy({ left: -passoIg() }));
+      proxIg.addEventListener("click", () => trilhoIg.scrollBy({ left: passoIg() }));
+      trilhoIg.addEventListener("scroll", atualizarSetasIg, { passive: true });
+      window.addEventListener("resize", atualizarSetasIg);
+      atualizarSetasIg();
+
     })();
   </script>
 </body>
