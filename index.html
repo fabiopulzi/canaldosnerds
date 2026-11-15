@@ -1006,6 +1006,196 @@
       right: -14px;
     }
 
+    /* ---------- Parceiros do canal ---------- */
+    .categoria {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.05rem;
+      margin: 26px 0 14px;
+      color: var(--ouro-claro);
+    }
+
+    .categoria svg {
+      width: 22px;
+      height: 22px;
+      color: var(--ouro);
+    }
+
+    .lista-parceiros {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(340px, 100%), 1fr));
+      gap: 18px;
+    }
+
+    .parceiro {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      min-width: 0;
+      background: linear-gradient(180deg, var(--painel-2), var(--painel));
+      border: 1px solid var(--borda);
+      border-radius: 16px;
+      padding: 20px;
+      transition: border-color .2s ease, box-shadow .2s ease;
+    }
+
+    .parceiro:hover {
+      border-color: rgba(255, 180, 0, .45);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, .4);
+    }
+
+    .parceiro-topo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .parceiro-logo {
+      width: 56px;
+      height: 56px;
+      flex: none;
+      border-radius: 14px;
+      background: #05070a;
+      border: 1px solid var(--borda);
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      padding: 9px;
+    }
+
+    .parceiro-logo.cheio {
+      padding: 0;
+      border: 0;
+    }
+
+    .parceiro-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .parceiro h4 {
+      margin: 0;
+      font-size: 1.15rem;
+    }
+
+    .parceiro-tag {
+      color: var(--suave);
+      font-size: .85rem;
+    }
+
+    .parceiro > p {
+      margin: 0;
+      color: #c7cfdc;
+      font-size: .95rem;
+    }
+
+    .parceiro .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .parceiro .chip-p {
+      font-size: .75rem;
+      font-weight: 600;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: #0a0e15;
+      border: 1px solid var(--borda);
+      color: #b9c3d3;
+    }
+
+    .mini {
+      margin-top: auto;
+    }
+
+    .mini-trilho {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: 100%;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      border-radius: var(--raio);
+    }
+
+    .mini-trilho::-webkit-scrollbar {
+      display: none;
+    }
+
+    .mini-trilho .video {
+      transform: none;
+    }
+
+    .mini-controles {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .mini-controles button.mini-seta {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid var(--borda);
+      background: var(--painel);
+      color: var(--texto);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+    }
+
+    .mini-controles button.mini-seta:hover:not(:disabled) {
+      border-color: var(--ouro);
+      color: var(--ouro);
+    }
+
+    .mini-controles button.mini-seta:disabled {
+      opacity: .35;
+      cursor: default;
+    }
+
+    .mini-controles svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .mini-pontos {
+      display: flex;
+      gap: 6px;
+    }
+
+    .mini-pontos button {
+      width: 8px;
+      height: 8px;
+      padding: 0;
+      border: 0;
+      border-radius: 50%;
+      background: #2a3346;
+      cursor: pointer;
+    }
+
+    .mini-pontos button[aria-current="true"] {
+      background: var(--ouro);
+      width: 20px;
+      border-radius: 4px;
+    }
+
+    .parceiro .btn {
+      align-self: flex-start;
+    }
+
+    .nota-parceiros {
+      margin: 22px 0 0;
+      font-size: .8rem;
+      color: #6f7a8c;
+    }
+
     /* Carrossel do Instagram (embeds oficiais) */
     .trilho-ig {
       display: grid;
@@ -1293,7 +1483,8 @@
       .ctas .btn,
       .rodape-redes .btn,
       .cabeca-secao .btn,
-      .arquivos .btn {
+      .arquivos .btn,
+      .parceiro .btn {
         width: 100%;
       }
     }
@@ -1334,6 +1525,19 @@
     <symbol id="i-pasta" viewBox="0 0 24 24">
       <path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"
         d="M3 6.5A1.5 1.5 0 0 1 4.5 5h4.6l2 2.2h8.4A1.5 1.5 0 0 1 21 8.7v9.8a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 18.5z" />
+    </symbol>
+    <symbol id="i-pool" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <rect x="3" y="4" width="18" height="6" rx="2" />
+        <rect x="3" y="14" width="18" height="6" rx="2" />
+        <path d="M7 7h.01M7 17h.01M11 7h6M11 17h6" />
+      </g>
+    </symbol>
+    <symbol id="i-app" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2.5" y="4" width="19" height="13" rx="2" />
+        <path d="M8 21h8M12 17v4M6.5 13l3-3.5 2.5 2 4-4.5" />
+      </g>
     </symbol>
     <symbol id="i-play" viewBox="0 0 24 24">
       <path fill="currentColor" d="M8 5.5v13l11-6.5z" />
@@ -1583,6 +1787,28 @@
             <use href="#i-seta-d" />
           </svg></button>
       </div>
+    </section>
+
+    <section id="parceiros">
+      <div class="cabeca-secao">
+        <div>
+          <h2>Parceiros do canal</h2>
+          <p>Pools e aplicações que usamos e apresentamos nos vídeos do Canal dos Nerds.</p>
+        </div>
+      </div>
+
+      <h3 class="categoria"><svg aria-hidden="true">
+          <use href="#i-pool" />
+        </svg> Pools de mineração</h3>
+      <div class="lista-parceiros" id="parceiros-pools"></div>
+
+      <h3 class="categoria"><svg aria-hidden="true">
+          <use href="#i-app" />
+        </svg> Aplicações</h3>
+      <div class="lista-parceiros" id="parceiros-apps"></div>
+
+      <p class="nota-parceiros">Os parceiros são serviços independentes, com termos e políticas próprios. Antes de
+        usar, confira as condições de cada um. Saiba mais nos <a href="termos.html">termos e condições</a>.</p>
     </section>
   </main>
 
@@ -1860,6 +2086,144 @@
       trilho.appendChild(cartaoVerMais());
       atualizarSetas();
     })();
+
+    // ================= Parceiros do canal =================
+    // Para incluir um parceiro, adicione um bloco nesta lista.
+    // categoria: "pool" ou "app". videos: ids do YouTube (o que vem depois de "v=").
+    const parceiros = [
+      {
+        categoria: "pool",
+        nome: "Fusion Pool",
+        tag: "Pool brasileira · várias moedas",
+        descricao: "Pool brasileira de mineração híbrida. A recompensa de cada bloco é dividida entre quem encontrou o bloco (70%), quem segue contribuindo com a pool (25%) e um jackpot da comunidade (5%).",
+        chips: ["DigiByte (DGB)", "Bitcoin Cash II (BCH2)", "Salvium (SAL)", "Kvanta5 (KV5)"],
+        logo: "assets/parceiros/fusion-pool.svg",
+        logoCheio: true,
+        url: "https://fusionpool.pro/",
+        videos: [
+          { id: "xHDN0mclT8E", titulo: "Do ESP32 à BITAXE: como minerar DGB na nova FusionPool — tutorial completo" },
+          { id: "cVjteMJMVEY", titulo: "Como minerar DGB ou Bitcoin com o seu NerdMiner V2 — unboxing e configuração" },
+          { id: "ivMJ9fPi6rg", titulo: "KVANTA5 (KV5): como minerar na FusionPool com Bitaxe + criar carteira oficial" },
+          { id: "jt-4ZIfY2pA", titulo: "Como minerar Bitcoin Cash II (BCH2) na FusionPool: Bitaxe, ESP32 e mais" },
+        ],
+      },
+      {
+        categoria: "pool",
+        nome: "Mining Surfers",
+        tag: "Pool de Portugal · by DeFi Surfers",
+        descricao: "Pool comunitária de Bitcoin no modelo PPLNS: cada bloco encontrado é dividido entre todos os mineradores, de acordo com as shares enviadas. Não fica com a custódia das suas moedas e tem passo a passo para Bitaxe e NerdAxe.",
+        chips: ["Bitcoin (BTC)", "PPLNS", "Não custodial"],
+        logo: "assets/parceiros/mining-surfers.svg",
+        url: "https://pool.defisurfers.xyz/",
+        videos: [
+          { id: "YU9cUHj6I2Q", titulo: "MINING SURFERS (Portugal): nova pool de Bitcoin! Como minerar com Bitaxe — PPLNS passo a passo" },
+        ],
+      },
+      {
+        categoria: "app",
+        nome: "Hash Commander",
+        tag: "Painel de mineração para computador",
+        descricao: "Reúne em uma única janela as máquinas de mineração da sua rede local, a pool, o mempool e o preço do Bitcoin. Seus dados ficam no seu computador.",
+        chips: ["Bitaxe e NerdAxe", "Pool e mempool", "Dados locais"],
+        logo: "assets/parceiros/hash-commander.png",
+        logoCheio: true,
+        url: "https://hashcommander.hashcommander.workers.dev/",
+        videos: [
+          { id: "w1YI9MnMPEI", titulo: "Nunca vi tantas funções em um só programa! Hash Commander — seu centro de mineração completo" },
+        ],
+      },
+    ];
+
+    function criarParceiro(p) {
+      const card = document.createElement("article");
+      card.className = "parceiro";
+      card.innerHTML = `
+        <div class="parceiro-topo">
+          <div class="parceiro-logo${p.logoCheio ? " cheio" : ""}"><img alt="" width="56" height="56" loading="lazy"></div>
+          <div><h4></h4><div class="parceiro-tag"></div></div>
+        </div>
+        <p></p>
+        <div class="chips"></div>`;
+      card.querySelector("img").src = p.logo;
+      card.querySelector("img").alt = `Logo ${p.nome}`;
+      card.querySelector("h4").textContent = p.nome;
+      card.querySelector(".parceiro-tag").textContent = p.tag;
+      card.querySelector("p").textContent = p.descricao;
+      for (const c of p.chips) {
+        const span = document.createElement("span");
+        span.className = "chip-p";
+        span.textContent = c;
+        card.querySelector(".chips").appendChild(span);
+      }
+
+      if (p.videos.length) {
+        const mini = document.createElement("div");
+        mini.className = "mini";
+        const trilhoP = document.createElement("div");
+        trilhoP.className = "mini-trilho";
+        trilhoP.setAttribute("aria-label", `Vídeos sobre ${p.nome}`);
+        for (const v of p.videos) {
+          const b = document.createElement("button");
+          b.type = "button";
+          b.className = "video";
+          b.innerHTML = `
+            <div class="thumb"><img loading="lazy" alt=""><span class="play"><svg><use href="#i-play"/></svg></span></div>
+            <div class="video-info"><b></b></div>`;
+          b.querySelector("img").src = `https://i.ytimg.com/vi/${encodeURIComponent(v.id)}/mqdefault.jpg`;
+          b.querySelector("b").textContent = v.titulo;
+          b.setAttribute("aria-label", `Assistir: ${v.titulo}`);
+          b.addEventListener("click", () => abrirVideo(v));
+          trilhoP.appendChild(b);
+        }
+        mini.appendChild(trilhoP);
+
+        if (p.videos.length > 1) {
+          const ctrl = document.createElement("div");
+          ctrl.className = "mini-controles";
+          ctrl.innerHTML = `
+            <button type="button" class="mini-seta" aria-label="Vídeo anterior"><svg><use href="#i-seta-e"/></svg></button>
+            <div class="mini-pontos"></div>
+            <button type="button" class="mini-seta" aria-label="Próximo vídeo"><svg><use href="#i-seta-d"/></svg></button>`;
+          const [ant, prox] = ctrl.querySelectorAll(".mini-seta");
+          const pontos = ctrl.querySelector(".mini-pontos");
+          const ir = (i) => trilhoP.scrollTo({ left: i * trilhoP.clientWidth });
+          const atual = () => Math.round(trilhoP.scrollLeft / Math.max(1, trilhoP.clientWidth));
+          p.videos.forEach((v, i) => {
+            const d = document.createElement("button");
+            d.type = "button";
+            d.setAttribute("aria-label", `Vídeo ${i + 1} de ${p.videos.length}`);
+            d.addEventListener("click", () => ir(i));
+            pontos.appendChild(d);
+          });
+          const marcar = () => {
+            const i = atual();
+            ant.disabled = i <= 0;
+            prox.disabled = i >= p.videos.length - 1;
+            [...pontos.children].forEach((d, j) => d.setAttribute("aria-current", j === i ? "true" : "false"));
+          };
+          ant.addEventListener("click", () => ir(atual() - 1));
+          prox.addEventListener("click", () => ir(atual() + 1));
+          trilhoP.addEventListener("scroll", marcar, { passive: true });
+          window.addEventListener("resize", marcar);
+          marcar();
+          mini.appendChild(ctrl);
+        }
+        card.appendChild(mini);
+      }
+
+      const a = document.createElement("a");
+      a.className = "btn btn-contorno";
+      a.href = p.url;
+      a.target = "_blank";
+      a.rel = "noopener";
+      a.textContent = `Visitar ${p.nome} ↗`;
+      card.appendChild(a);
+      return card;
+    }
+
+    for (const p of parceiros) {
+      document.getElementById(p.categoria === "pool" ? "parceiros-pools" : "parceiros-apps").appendChild(criarParceiro(p));
+    }
 
     // ================= Instagram =================
     // Os posts exibidos ficam em instagram.json (lista de links de posts/reels).

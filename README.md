@@ -73,3 +73,14 @@ Os posts exibidos ficam em `instagram.json`, uma lista com os links dos posts ou
 (ex.: `https://www.instagram.com/p/CODIGO/` ou `https://www.instagram.com/reel/CODIGO/`).
 Para trocar, basta editar a lista e fazer commit. A ordem da lista é a ordem do carrossel.
 Se a lista ficar vazia, a seção some da página.
+
+## Parceiros do canal
+
+Os parceiros ficam na lista `parceiros`, no fim do `index.html`. Cada bloco tem:
+
+- `categoria`: `"pool"` (Pools de mineração) ou `"app"` (Aplicações);
+- `nome`, `tag` (linha curta abaixo do nome), `descricao` e `chips` (destaques);
+- `logo`: imagem em `assets/parceiros/` (use `logoCheio: true` se o logo já tiver fundo próprio);
+- `url`: link do parceiro;
+- `videos`: lista com o `id` (o que vem depois de `v=` no link do YouTube) e o `titulo` de cada vídeo.
+  Com mais de um vídeo, o card mostra um carrossel com setas.
