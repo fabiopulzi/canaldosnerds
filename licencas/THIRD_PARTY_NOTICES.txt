@@ -1,0 +1,36 @@
+THIRD-PARTY NOTICES — NerdOS ESP32 Miner v1.6.1
+
+SparkMiner by SneezeGUI
+Source: https://github.com/SneezeGUI/SparkMiner
+License: GNU General Public License v3.0
+
+NERD OS v1.6.1 incorporates/adapts the standard-ESP32 pipelined hardware
+SHA-256 mining hot-loop architecture from SparkMiner's GPLv3 source,
+particularly the sha256_pipelined_v3 implementation. SparkMiner credits
+BitsyMiner by Justin Williams as inspiration/source lineage for the
+pipelined SHA-256 assembly. Because this is a GPL-derived combined work,
+this NerdOS firmware package is distributed under GPL-3.0.
+
+BitsyMiner by Justin Williams
+Referenced/credited by SparkMiner for pipelined SHA-256 assembly.
+License lineage: GPL v3 as documented by SparkMiner.
+
+WiFiManager v2.0.17
+Copyright (c) 2015 tzapu
+Source: https://github.com/tzapu/WiFiManager
+License: MIT
+
+ArduinoJson v6.21.5
+Copyright Benoit Blanchon
+Source: https://github.com/bblanchon/ArduinoJson
+License: MIT
+
+esptool 4.7.0 (Espressif)
+Used by the Windows flashing helper.
+Source: https://github.com/espressif/esptool
+License: GPL-2.0-or-later (project distribution terms apply to the tool itself).
+
+PlatformIO Core 6.1.18
+Used only by the Windows build helper to compile the firmware.
+Source: https://github.com/platformio/platformio-core
+License: Apache-2.0

@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Termos e Condições · Canal dos Nerds</title>
+  <meta name="description" content="Termos e condições de uso do site de firmwares oficiais do Canal dos Nerds.">
+  <meta name="theme-color" content="#07090d">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Russo+One&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #07090d; --painel: #0e121a; --borda: #222b3b; --texto: #eef1f7; --suave: #a3aec0;
+      --ouro: #ffb400; --ouro-claro: #ffd45c; --ouro-2: #ff8a00; --ciano: #3cc8ff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; background: var(--bg); color: var(--texto); line-height: 1.7;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--ciano); }
+    .container { max-width: 820px; margin: 0 auto; padding: 0 16px; }
+    header { border-bottom: 1px solid var(--borda); background: #05070a; }
+    .topo { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 16px; }
+    .marca { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--texto); }
+    .marca img { width: 40px; height: 40px; }
+    .marca b { font-family: "Russo One", sans-serif; font-weight: 400; }
+    .voltar {
+      color: #1a1000; text-decoration: none; font-weight: 700; font-size: .9rem; border-radius: 8px; padding: 8px 14px;
+      background: linear-gradient(180deg, var(--ouro-claro), var(--ouro) 50%, var(--ouro-2));
+    }
+    main { padding: 36px 0 56px; }
+    h1 { font-family: "Russo One", sans-serif; font-weight: 400; font-size: clamp(1.6rem, 4vw, 2.2rem); margin: 0 0 6px; line-height: 1.2; }
+    .atualizado { color: var(--suave); font-size: .9rem; margin: 0 0 24px; }
+    .resumo {
+      background: rgba(255,180,0,.07); border: 1px solid rgba(255,180,0,.35); border-radius: 12px;
+      padding: 14px 18px; margin-bottom: 28px; color: #eadfc6;
+    }
+    .resumo strong { color: var(--ouro-claro); }
+    .resumo ul { margin: 6px 0 0; padding-left: 20px; }
+    h2 { font-size: 1.15rem; margin: 32px 0 6px; color: var(--ouro-claro); }
+    p, li { color: #cfd6e2; }
+    ul { padding-left: 22px; }
+    li { margin: 4px 0; }
+    .caixa-alta { text-transform: uppercase; font-size: .92rem; letter-spacing: .01em; }
+    footer { border-top: 1px solid var(--borda); padding: 20px 16px; text-align: center; color: var(--suave); font-size: .85rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container topo">
+      <a class="marca" href="./"><img src="assets/favicon.png" width="40" height="40" alt=""><b>Canal dos Nerds</b></a>
+      <a class="voltar" href="./">← Voltar aos firmwares</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1>Termos e Condições de Uso</h1>
+    <p class="atualizado">Última atualização: 14 de novembro de 2026</p>
+
+    <div class="resumo">
+      <strong>Resumo em linguagem simples</strong> (não substitui o texto completo):
+      <ul>
+        <li>Os firmwares são gratuitos e fornecidos <strong>no estado em que se encontram</strong>, sem garantias.</li>
+        <li>Gravar um firmware apaga a memória da placa e você faz isso <strong>por sua conta e risco</strong>.</li>
+        <li>Mineração de criptomoedas <strong>não é recomendação de investimento</strong> e não há garantia de ganhos.</li>
+        <li>O site não pede cadastro e não coleta seus dados pessoais.</li>
+      </ul>
+    </div>
+
+    <h2>1. Aceitação</h2>
+    <p>Ao acessar este site ou instalar qualquer firmware disponibilizado nele, você declara que leu, entendeu e concorda com estes Termos e Condições. Se não concordar, não utilize o site nem os firmwares.</p>
+
+    <h2>2. Sobre o site</h2>
+    <p>Este site reúne os firmwares oficiais do projeto <strong>NERD OS</strong>, do <strong>Canal dos Nerds</strong>, para placas da família ESP32, e permite instalá-los diretamente pelo navegador. O site é gratuito, tem finalidade educacional e de entretenimento, e não possui vínculo com a Espressif Systems, com fabricantes das placas, com o YouTube/Google, com o GitHub ou com qualquer pool, corretora ou projeto de criptomoeda mencionado.</p>
+
+    <h2>3. Uso por sua conta e risco</h2>
+    <p>A gravação de firmware é um procedimento técnico. Ao utilizá-la, você reconhece que:</p>
+    <ul>
+      <li>a gravação <strong>apaga todo o conteúdo</strong> da memória da placa, incluindo configurações e dados salvos;</li>
+      <li>falhas durante a gravação (queda de energia, cabo com defeito, desconexão, incompatibilidade de drivers, entre outras) podem deixar a placa temporária ou permanentemente inoperante;</li>
+      <li>é sua responsabilidade escolher o firmware correto para o seu modelo de placa — instalar uma versão incompatível pode fazer a placa ou a tela não funcionarem;</li>
+      <li>o uso contínuo em mineração mantém a placa em carga elevada, o que pode causar aquecimento e desgaste; cabe a você garantir ventilação, fonte de alimentação adequada e instalação elétrica segura;</li>
+      <li>você é o único responsável pelos equipamentos, redes e contas que utilizar com os firmwares.</li>
+    </ul>
+
+    <h2>4. Ausência de garantias</h2>
+    <p class="caixa-alta">Os firmwares, o site e todo o seu conteúdo são fornecidos “no estado em que se encontram” e “conforme disponíveis”, sem garantias de qualquer tipo, expressas ou implícitas, incluindo, sem limitação, garantias de funcionamento, desempenho, taxa de mineração (hashrate), compatibilidade, adequação a uma finalidade específica, disponibilidade ou ausência de erros.</p>
+    <p>Esta isenção também decorre da licença GPL-3.0 sob a qual o firmware é distribuído (seções 15 e 16 da licença).</p>
+
+    <h2>5. Limitação de responsabilidade</h2>
+    <p>Na máxima extensão permitida pela legislação aplicável, o Canal dos Nerds, seus criadores, colaboradores e os mantenedores deste site <strong>não se responsabilizam</strong> por quaisquer danos, diretos ou indiretos, decorrentes do uso ou da impossibilidade de uso do site ou dos firmwares, incluindo, sem limitação: danos a placas, computadores ou outros equipamentos; perda de dados; custos de energia elétrica; perdas financeiras, de criptomoedas ou de oportunidades; interrupções de serviço; ou danos causados por serviços de terceiros.</p>
+
+    <h2>6. Criptomoedas e mineração</h2>
+    <ul>
+      <li>Nada neste site, nos firmwares ou nos vídeos vinculados constitui <strong>recomendação de investimento</strong>, consultoria financeira, jurídica ou tributária.</li>
+      <li>Criptomoedas são ativos de alto risco e de valor volátil. Mineração com ESP32 tem caráter principalmente educacional e de hobby; <strong>não há garantia de qualquer retorno</strong>, e os custos (como energia) podem superar eventuais ganhos.</li>
+      <li>Pools de mineração, carteiras e corretoras são serviços de terceiros, com termos próprios. Escolher, configurar e proteger esses serviços, suas carteiras e chaves é responsabilidade exclusiva sua.</li>
+      <li>Cabe a você verificar e cumprir as leis e obrigações tributárias aplicáveis à mineração e às criptomoedas no seu país.</li>
+    </ul>
+
+    <h2>7. Serviços de terceiros</h2>
+    <p>Para funcionar, o site utiliza serviços de terceiros, que possuem termos e políticas de privacidade próprios e sobre os quais não temos controle:</p>
+    <ul>
+      <li><strong>GitHub Pages</strong> — hospedagem do site e dos arquivos de firmware;</li>
+      <li><strong>ESP Web Tools</strong>, carregado via <strong>unpkg.com</strong> — ferramenta que realiza a gravação pelo navegador;</li>
+      <li><strong>YouTube</strong> (modo de privacidade aprimorada, youtube-nocookie.com) — miniaturas e reprodução dos vídeos do canal;</li>
+      <li><strong>Google Fonts</strong> — fontes tipográficas da página;</li>
+      <li><strong>Abacus</strong> (abacus.jasoncameron.dev) — contador anônimo de instalações.</li>
+    </ul>
+    <p>A disponibilidade desses serviços não é garantida, e eles podem mudar ou deixar de funcionar sem aviso.</p>
+
+    <h2>8. Privacidade</h2>
+    <ul>
+      <li>O site <strong>não exige cadastro</strong> e não coleta nome, e-mail ou outros dados pessoais.</li>
+      <li>Quando uma instalação é concluída com sucesso, o site apenas soma +1 ao contador público daquele firmware, sem enviar qualquer informação sobre você ou sua placa.</li>
+      <li>A gravação acontece localmente, entre o seu navegador e a sua placa. O site não tem acesso a outros dispositivos do seu computador.</li>
+      <li>Os serviços de terceiros listados acima podem registrar dados técnicos de acesso (como endereço IP e informações do navegador), conforme as políticas de cada um.</li>
+    </ul>
+    <p>O tratamento de dados, quando houver, observa a Lei Geral de Proteção de Dados (Lei nº 13.709/2018).</p>
+
+    <h2>9. Licença do software</h2>
+    <p>O firmware NERD OS é software livre, distribuído sob a <a href="licencas/LICENSE-GPL-3.0.txt">GNU General Public License v3.0 (GPL-3.0)</a>, pois incorpora código derivado de projetos licenciados sob a GPL-3.0. Ele também utiliza bibliotecas de terceiros sob outras licenças livres, listadas nos <a href="licencas/THIRD_PARTY_NOTICES.txt">avisos de terceiros</a>. Seus direitos de usar, estudar, modificar e redistribuir o firmware são os garantidos pela GPL-3.0, e nada nestes Termos os restringe. Para obter o código-fonte correspondente, entre em contato pelo <a href="https://www.youtube.com/@eduardotirapani" target="_blank" rel="noopener">canal do YouTube</a>.</p>
+
+    <h2>10. Marca e conteúdo</h2>
+    <p>O nome “Canal dos Nerds”, o logotipo, a identidade visual, os vídeos e os textos deste site pertencem aos seus respectivos titulares e não são licenciados pela GPL-3.0. Não é permitido utilizá-los para se passar pelo Canal dos Nerds, sugerir apoio oficial ou distribuir versões modificadas do firmware como se fossem oficiais. As demais marcas citadas pertencem aos seus respectivos donos.</p>
+
+    <h2>11. Alterações</h2>
+    <p>Estes Termos, o site e os firmwares podem ser alterados, atualizados ou removidos a qualquer momento, sem aviso prévio. A versão em vigor é sempre a publicada nesta página.</p>
+
+    <h2>12. Contato</h2>
+    <p>Dúvidas sobre estes Termos podem ser enviadas pelo canal oficial no YouTube: <a href="https://www.youtube.com/@eduardotirapani" target="_blank" rel="noopener">youtube.com/@eduardotirapani</a>.</p>
+
+    <h2>13. Legislação aplicável</h2>
+    <p>Estes Termos são regidos pelas leis da República Federativa do Brasil. Nenhuma disposição destes Termos afasta direitos que não possam ser renunciados nos termos da legislação aplicável, inclusive do Código de Defesa do Consumidor, quando for o caso.</p>
+  </main>
+
+  <footer>Canal dos Nerds · Firmwares oficiais do NERD OS para ESP32 · <a href="./">Voltar ao início</a></footer>
+</body>
+</html>

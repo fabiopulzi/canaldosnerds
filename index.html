@@ -321,6 +321,13 @@
     .rodape-marca img { width: 48px; height: 48px; }
     .rodape-marca b { font-family: var(--fonte-titulo); font-weight: 400; }
     .rodape small { color: var(--suave); display: block; }
+    .rodape-legal {
+      display: flex; justify-content: space-between; align-items: center; gap: 8px 16px; flex-wrap: wrap;
+      padding: 12px 16px 20px; border-top: 1px solid #141a26; font-size: .78rem; color: #6f7a8c;
+    }
+    .rodape-legal nav { display: flex; gap: 8px; }
+    .rodape-legal a { color: #8792a5; text-decoration: none; }
+    .rodape-legal a:hover { color: var(--ouro); text-decoration: underline; }
 
     /* ---------- Responsivo ---------- */
     @media (max-width: 980px) {
@@ -485,6 +492,14 @@
         </div>
       </div>
       <a class="btn btn-yt" href="https://www.youtube.com/@eduardotirapani" target="_blank" rel="noopener"><svg><use href="#i-yt"/></svg> youtube.com/@eduardotirapani</a>
+    </div>
+    <div class="container rodape-legal">
+      <span>Firmwares fornecidos sem garantias. Use por sua conta e risco.</span>
+      <nav aria-label="Informações legais">
+        <a href="termos.html">Termos e condições</a>
+        <span aria-hidden="true">·</span>
+        <a href="licencas/LICENSE-GPL-3.0.txt">Licença GPL-3.0</a>
+      </nav>
     </div>
   </footer>
 
