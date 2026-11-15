@@ -10,7 +10,8 @@ Site estático que usa o [ESP Web Tools](https://esphome.github.io/esp-web-tools
    (pelo site: "Add file" → "Upload files", arrastando as pastas).
 4. No repositório, abra **Settings → Pages**.
    Em "Source" escolha **Deploy from a branch**, branch `main`, pasta `/ (root)`, e salve.
-5. Em 1 ou 2 minutos o site fica no ar em `https://fabiopulzi.github.io/canaldosnerds/`.
+5. Em 1 ou 2 minutos o site fica no ar em https://canaldosnerds.com.br/
+   (domínio próprio, configurado no arquivo `CNAME` e em Settings → Pages → Custom domain).
 
 ## Adicionar um firmware
 
