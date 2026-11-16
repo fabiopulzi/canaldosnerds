@@ -618,6 +618,19 @@
       font-size: .95rem;
     }
 
+    .em-testes {
+      display: inline-block;
+      padding: 1px 8px;
+      margin-right: 2px;
+      border-radius: 6px;
+      background: rgba(255, 77, 77, .14);
+      border: 1px solid rgba(255, 77, 77, .55);
+      color: #ff8080;
+      font-size: .8rem;
+      font-weight: 800;
+      letter-spacing: .04em;
+    }
+
     .tags {
       display: flex;
       gap: 6px;
@@ -1907,6 +1920,18 @@
         realce: { x: -1, y: 56, w: 10, h: 23 },  // posição da porta Micro USB na foto, em %
         identificar: "Confira a lateral da sua placa: ela tem <strong>apenas 1 porta USB</strong> (<strong>Micro USB</strong>). Se a sua tem 2 portas (USB-C + Micro USB), use a versão <strong>CYD 2 USB</strong>.",
         manifest: "firmwares/nerd-os-cyd-ili9341/manifest.json"
+      },
+      {
+        nome: "NERD OS — LILYGO NerdMiner V2 T‑Display‑S3",  // hífens que não quebram linha
+        emTestes: true,  // mostra o aviso "AINDA EM TESTES" no início da descrição
+        descricao: "Versão para a placa LILYGO T-Display-S3 (NerdMiner V2), com chip ESP32-S3, tela de 1,9\" e 2 botões.",
+        versao: "2.2.4",
+        chips: ["ESP32-S3", "LILYGO T-Display-S3", "NerdMiner V2", "Tela 1,9\""],
+        icone: "tela",
+        imagem: "assets/placas/lilygo-t-display-s3.webp",
+        imagemAlt: "LILYGO NerdMiner V2 T-Display-S3, com a tela horizontal e 2 botões na lateral",
+        identificar: "Placa com <strong>tela horizontal</strong> e <strong>2 botões</strong> ao lado da tela. O chip é o <strong>ESP32-S3</strong>, diferente do ESP32 clássico das outras versões.",
+        manifest: "firmwares/nerd-os-tdisplay-s3/manifest.json"
       }
     ];
 
@@ -2017,6 +2042,12 @@
       }
       card.querySelector("h3").textContent = fw.nome;
       card.querySelector("p").textContent = fw.descricao;
+      if (fw.emTestes) {
+        const t = document.createElement("strong");
+        t.className = "em-testes";
+        t.textContent = "AINDA EM TESTES";
+        card.querySelector("p").prepend(t, " ");
+      }
       const tags = card.querySelector(".tags");
       [`v${fw.versao}`, ...fw.chips].forEach((t, i) => {
         const s = document.createElement("span");
