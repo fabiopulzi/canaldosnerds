@@ -6,7 +6,7 @@
     {
       "chipFamily": "ESP32-S3",
       "parts": [
-        { "path": "NERD_OS_TDISPLAY_S3_v2.2.4_FULL.bin", "offset": 0 }
+        { "path": "NERD_OS_TDISPLAY_S3_v2.2.4_HWSHA_FULL.bin", "offset": 0 }
       ]
     }
   ]
