@@ -1,12 +1,12 @@
 {
   "name": "NERD OS — LILYGO T-Display-S3",
-  "version": "2.2.4",
+  "version": "2.3",
   "new_install_prompt_erase": true,
   "builds": [
     {
       "chipFamily": "ESP32-S3",
       "parts": [
-        { "path": "NERD_OS_TDISPLAY_S3_v2.2.4_HWSHA_FULL.bin", "offset": 0 }
+        { "path": "NERD_OS_TDISPLAY_S3_v2.3_FULL.bin", "offset": 0 }
       ]
     }
   ]

@@ -1,12 +1,12 @@
 {
   "name": "NERD OS — ESP32 CYD 1 USB (display ILI9341)",
-  "version": "2.2.4",
+  "version": "2.3",
   "new_install_prompt_erase": true,
   "builds": [
     {
       "chipFamily": "ESP32",
       "parts": [
-        { "path": "NERD_OS_CYD_ILI9341_v2.2.4_FULL.bin", "offset": 0 }
+        { "path": "NERD_OS_CYD_ILI9341_v2.3_FULL.bin", "offset": 0 }
       ]
     }
   ]
