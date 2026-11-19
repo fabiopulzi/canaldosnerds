@@ -1998,6 +1998,7 @@
     for (const fw of firmwares) {
       const card = document.createElement("article");
       card.className = "card";
+      card.id = fw.manifest.split("/")[1];  // âncora do card (ex.: #nerd-os-devkit), usada nos links do projetos.json
       card.innerHTML = `
         ${fw.imagem ? `<div class="card-foto"><div class="foto-moldura"><img loading="lazy"></div></div>` : ""}
         <div class="card-topo">
@@ -2061,6 +2062,13 @@
     }
     document.getElementById("lcd-firmwares").textContent = firmwares.length;
     document.getElementById("lcd-versao").textContent = firmwares.map((f) => f.versao).sort().pop();
+
+    // Links como canaldosnerds.com.br/#nerd-os-devkit: os cards são criados aqui pelo script,
+    // depois que o navegador já tentou rolar até a âncora, então rolamos de novo.
+    const alvoInicial = location.hash && document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    if (alvoInicial && alvoInicial.closest("#firmwares")) {
+      addEventListener("load", () => alvoInicial.scrollIntoView({ behavior: "instant", block: "start" }));
+    }
 
     // ================= Vídeos do canal =================
     // videos.json é atualizado automaticamente pelo GitHub Actions

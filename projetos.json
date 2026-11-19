@@ -1,0 +1,42 @@
+[
+  {
+    "id": "nerd-os-devkit",
+    "titulo": "NERD OS — ESP32 DevKit",
+    "resumo": "Firmware NERD OS para o ESP32 clássico (DevKit WROOM-32), sem display. Instale direto pelo navegador, sem programas.",
+    "foto": "https://canaldosnerds.com.br/assets/placas/esp32-devkit-wroom32.webp",
+    "categoria": "ESP32",
+    "dificuldade": "fácil",
+    "data": "2026-11-13",
+    "link": "https://canaldosnerds.com.br/#nerd-os-devkit"
+  },
+  {
+    "id": "nerd-os-cyd-st7789",
+    "titulo": "NERD OS — ESP32 CYD 2 USB (com display)",
+    "resumo": "Firmware NERD OS para a placa ESP32-2432S028 (CYD) com tela de 2,8\" e 2 portas USB (USB-C + Micro USB). Instale direto pelo navegador, sem programas.",
+    "foto": "https://canaldosnerds.com.br/assets/placas/esp32-cyd-2432s028-2usb.webp",
+    "categoria": "ESP32",
+    "dificuldade": "fácil",
+    "data": "2026-11-13",
+    "link": "https://canaldosnerds.com.br/#nerd-os-cyd-st7789"
+  },
+  {
+    "id": "nerd-os-cyd-ili9341",
+    "titulo": "NERD OS — ESP32 CYD 1 USB (com display)",
+    "resumo": "Firmware NERD OS para a placa ESP32-2432S028 (CYD) com tela de 2,8\" e apenas 1 porta Micro USB. Instale direto pelo navegador, sem programas.",
+    "foto": "https://canaldosnerds.com.br/assets/placas/esp32-cyd-2432s028-1usb.webp",
+    "categoria": "ESP32",
+    "dificuldade": "fácil",
+    "data": "2026-11-14",
+    "link": "https://canaldosnerds.com.br/#nerd-os-cyd-ili9341"
+  },
+  {
+    "id": "nerd-os-tdisplay-s3",
+    "titulo": "NERD OS — LILYGO NerdMiner V2 T-Display-S3",
+    "resumo": "Firmware NERD OS para a LILYGO T-Display-S3 (NerdMiner V2), com chip ESP32-S3, tela de 1,9\" e 2 botões. Instale direto pelo navegador, sem programas.",
+    "foto": "https://canaldosnerds.com.br/assets/placas/lilygo-t-display-s3.webp",
+    "categoria": "ESP32",
+    "dificuldade": "fácil",
+    "data": "2026-11-16",
+    "link": "https://canaldosnerds.com.br/#nerd-os-tdisplay-s3"
+  }
+]
